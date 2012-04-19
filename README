@@ -21,7 +21,17 @@ Versão 0.3
 	Correção
 		GeradorDeString
 			gerador de strings com letras minúsculas
+	Implementação
 		ArvoreTrie
 			correção de lógicao
 			posicaoDoChar - retorna int de 0 a 25 para mapear numa posicao
 			inserirString - Insere na trie
+			
+Versão 0.4
+	Correção
+		GeradorDeArquivo
+			Correção no nome do arquivo de saida
+	Implementacao
+		ComparadorDeString
+			Compara o arquivo saida_desejada.txt com o saida.txt e aponta as diferenças
+				entre eles

@@ -60,6 +60,7 @@ public class ArvoreTrie
 	 */
 	protected boolean inserirString(char[] string, Nodo nodo)
 	{
+		
 		nodo.numeroDePrefixo++;
 		for( int a = 2; a < string.length; a++)
 		{

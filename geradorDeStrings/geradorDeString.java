@@ -39,7 +39,7 @@ public class geradorDeString
 	{
 		random = new Random();
 		listDePalavras = new ArrayList<String>();
-		saida = new geradorDeArquivo("saida.txt");
+		saida = new geradorDeArquivo("saida_desejada.txt");
 		entrada = new geradorDeArquivo("entrada.txt");
 
 	}
