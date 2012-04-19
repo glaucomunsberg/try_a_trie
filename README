@@ -1,0 +1,12 @@
+Versão 0.0
+	Configuração do GitHub
+
+Versão 0.1
+	Criacao do Automatico
+
+Versão 0.2
+	GeradorDeString, inserido ao código
+	GeradorDeArquivo, importado o código do gerador de arquivos (cod. do projeto Javeco)
+	Nodo, criada a classe que serve como nodo na trie
+	ArvoreTrie, criado a classe da árvore
+	LeitorDeArquivo, importado o codigo para leitura de arquivos (cod. do projeto Javeco)
