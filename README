@@ -5,8 +5,23 @@ Versão 0.1
 	Criacao do Automatico
 
 Versão 0.2
-	GeradorDeString, inserido ao código
-	GeradorDeArquivo, importado o código do gerador de arquivos (cod. do projeto Javeco)
-	Nodo, criada a classe que serve como nodo na trie
-	ArvoreTrie, criado a classe da árvore
-	LeitorDeArquivo, importado o codigo para leitura de arquivos (cod. do projeto Javeco)
+	Implementação
+		GeradorDeString
+			inserido ao código
+		GeradorDeArquivo
+			importado o código do gerador de arquivos (cod. do projeto Javeco)
+		Nodo
+			criada a classe que serve como nodo na trie
+		ArvoreTrie
+			criado a classe da árvore
+		LeitorDeArquivo
+			importado o codigo para leitura de arquivos (cod. do projeto Javeco)
+	
+Versão 0.3
+	Correção
+		GeradorDeString
+			gerador de strings com letras minúsculas
+		ArvoreTrie
+			correção de lógicao
+			posicaoDoChar - retorna int de 0 a 25 para mapear numa posicao
+			inserirString - Insere na trie

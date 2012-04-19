@@ -84,13 +84,13 @@ public class geradorDeString
 			switch(tipodeOperacao)
 			{
 				case 0:
-						acao = "I ";
+						acao = "i ";
 						break;
 				case 1:
-						acao = "B ";
+						acao = "b ";
 						break;
 				case 2:
-						acao = "R ";
+						acao = "r ";
 						break;
 				default:
 						break;
@@ -135,7 +135,7 @@ public class geradorDeString
 		 */
 		for(int a=0; a < tamanhoDaPalavraAtual; a++)
 		{
-			valor = 65 + random.nextInt(90 - 65);
+			valor = 97 + random.nextInt(122 - 97);
 			stringTemp.append( (char)valor);
 		}
 
@@ -179,16 +179,16 @@ public class geradorDeString
 			switch(valor)
 			{
 				case 0:
-					stringTemp.append("T");
+					stringTemp.append("t");
 					break;
 				case 1:
-					stringTemp.append("G");
+					stringTemp.append("g");
 					break;
 				case 2:
-					stringTemp.append("C");
+					stringTemp.append("c");
 					break;
 				case 3:
-					stringTemp.append("A");
+					stringTemp.append("a");
 					break;
 				default:
 					stringTemp.append("?");
@@ -213,19 +213,19 @@ public class geradorDeString
 	 */
 	public void geradorDeResultado(String acao, String palavra)
 	{
-		if( acao == "I ")
+		if( acao == "i ")
 		{
 			gravarNoArquivoDeResultado(podeIserir(palavra));
 		}
 		else
 		{
-			if(acao == "B ")
+			if(acao == "b ")
 			{
 				gravarNoArquivoDeResultado(podeBuscar(palavra));
 			}
 			else
 			{
-				if( acao == "R ")
+				if( acao == "r ")
 				{
 					gravarNoArquivoDeResultado(podeRemover(palavra));
 				}
