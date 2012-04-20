@@ -1,14 +1,14 @@
 /**
- * O comparador recebe dois arquivos
- * 	e os compara se achar diferença a ponta a linha
- * 	e a diferença
- * @author glaucoroberto
- *
+ * Classe que comparador recebe dois arquivos e os compara se achar diferença a ponta a linha e a diferença
+ *	LeitorDeArquivo arquivo1 - Faz a leitura do primeiro arquivo de comparação
+ *	LeitorDeArquivo arquivo2 - Faz a leitura do segundo arquivo de comparação
+ * @author glaucomunsberg@gmail.com
  */
+
 public class ComparadorDeStrings 
 {
-	protected LeitorDeArquivo arquivo1;
-	protected LeitorDeArquivo arquivo2;
+	private LeitorDeArquivo arquivo1;
+	private LeitorDeArquivo arquivo2;
 	
 	public ComparadorDeStrings()
 	{

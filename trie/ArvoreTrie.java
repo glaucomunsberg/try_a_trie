@@ -1,11 +1,20 @@
+/**
+ * Classe do objeto arvore trie
+ * 	Nodo raiz                     - O nodo pai de todos
+ * 	LeitorDeArquivo lerArquivo    - Faz a leitura do arquivo entrada.txt com os comandos em forma de strings
+ * 	geradorDeArquivo gerarArquivo - Gera o arquivo saida.txt com as respostas dos comandos obtidos do arquivo entrada.txt
+ *  boolean isDebug               - Usado para fazer uma debugging da execução do código
+ *  @author glaucomunsberg@gmail.com
+ */
+
 import java.util.Arrays;
 
 public class ArvoreTrie 
 {
-	Nodo raiz;
-	LeitorDeArquivo lerArquivo;
-	geradorDeArquivo gerarArquivo;
-	boolean isDebug;
+	private Nodo raiz;
+	private LeitorDeArquivo lerArquivo;
+	private geradorDeArquivo gerarArquivo;
+	public boolean isDebug;
 	
 	public static void main(String args[] )
 	{
@@ -40,7 +49,7 @@ public class ArvoreTrie
 	 * 	for executado será debugado ou não
 	 * @param isdebug
 	 */
-	public void setIsDebug(boolean isdebug)
+	private void setIsDebug(boolean isdebug)
 	{
 		this.isDebug = isdebug;
 	}
@@ -170,7 +179,7 @@ public class ArvoreTrie
 	{
 		Nodo nodo = raiz;
 		if( this.isDebug)
-			showDebug(String.format("Inserindo: %s\n", Arrays.toString(string)));
+			showDebug(String.format("Buscar: %s\n", Arrays.toString(string)));
 		for( int a = 2; a < string.length; a++)
 		{
 			if( nodo.nodos[this.posicaoDoChar(string[a])] != null)

@@ -43,7 +43,12 @@ Versão 0.5
 		buscarString - Busca a string dentro da árvore trie
 		showDebug    - Serve para debugar o código
 
+Versão 0.6
+	Correções
+		A lógica para o final do nodo estava invertida
+		Correção de encapsulamento
+		Mais documentação
 
 Houston, we have a problem?
-	Sim, não consegui ainda implementar o remove u.u
-		
+	Sim, não foi resolvido o problema do remover (Cod. ainda não inserido no ArvoreTrie por instabilidade)
+	Sim, aparente desperdício de memória

@@ -1,3 +1,9 @@
+/**
+ * Classe que gera um arquivo segundo o nome passado a ele
+ *	Formatter saida - Manipula as saidas e as coloca no arquivo
+ *	@author glaucomunsberg@gmail.com
+ */
+
 import java.io.FileNotFoundException;
 import java.util.Formatter;
 import java.util.FormatterClosedException;

@@ -1,3 +1,10 @@
+/**
+ * Classe LeitorDeArquivo retirada do projeto Javeco que lê o arquivo informado
+ * 	String abrir    - Recebe o nome do arquivo que será aberto
+ *  Scanner entrada - Entrada do arquivo
+ * @author glaucomunsberg@gmail.com
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;

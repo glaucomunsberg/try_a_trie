@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Random;
-import javax.swing.JOptionPane;
-
 /**
  * Classe responsável pela geração de dois arquivos
  * 	que serão usado como teste. O primeiro arquivo
@@ -10,18 +6,23 @@ import javax.swing.JOptionPane;
  * 	"saida.txt" contém apenas V ou F, de acordo com o que
  * 	se espera de saida do programa segundo aquela palavra
  * 	no programa da árvore B
- * @author glaucoroberto
+ * @author glaucomunsberg@gmail.com
  *
  */
+
+import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 public class geradorDeString
 {
-	Random random;						//Responsável pela aleatoriedade
-	ArrayList<String> listDePalavras;	//ArrayList "array" que conterá as palavras
-    int numeroDePalavras;				//O numero de palavras que será gerado em entrada.txt e resultados em saida.txt
-	int maiorNumeroDeLetras;			//O maior número de letras que pode haver em cada palavra
-	int tipodeOperacao;					//Tipo da operacao que está sendo realizada como Inserir, Remover e Buscar
-	int tipoDeString;					//Tipo de string por "palavras" ou "DNA"
-	geradorDeArquivo saida, entrada;	//Classe que insere na saida.txt e entrada.txt
+	private Random random;						//Responsável pela aleatoriedade
+	private ArrayList<String> listDePalavras;	//ArrayList "array" que conterá as palavras
+	private int numeroDePalavras;				//O numero de palavras que será gerado em entrada.txt e resultados em saida.txt
+	private int maiorNumeroDeLetras;			//O maior número de letras que pode haver em cada palavra
+	private int tipodeOperacao;					//Tipo da operacao que está sendo realizada como Inserir, Remover e Buscar
+	private int tipoDeString;					//Tipo de string por "palavras" ou "DNA"
+	private geradorDeArquivo saida, entrada;	//Classe que insere na saida.txt e entrada.txt
 	
 	
 	public static void main(String args[])
@@ -74,7 +75,7 @@ public class geradorDeString
 	 * 	e chama o método geradorDePalavras para
 	 * 	gerar uma a palavra e então uni-las em uma ação
 	 */
-	public void geradorDeTiposDeAcoes()
+	private void geradorDeTiposDeAcoes()
 	{
 		String acao;
 		for(int a=0; a < numeroDePalavras; a++)
@@ -114,7 +115,7 @@ public class geradorDeString
 	 * 	parte (comando)
 	 * @param String palavra
 	 */
-	public void gerarDePalavras(String acao)
+	private void gerarDePalavras(String acao)
 	{
 
 		
@@ -155,7 +156,7 @@ public class geradorDeString
 	 * 	parte (comando)
 	 * @param String palavra
 	 */
-	public void geradorDeDNA(String acao)
+	private void geradorDeDNA(String acao)
 	{
 		StringBuilder stringTemp = new StringBuilder(); 				//String temporárioa
 		int valor;														//valor em int de um char que gerará
@@ -211,7 +212,7 @@ public class geradorDeString
 	 * então ele deve gerar um resultado verdadeiro ou falas segundo a
 	 * simulação dessa ação na árvore tre
 	 */
-	public void geradorDeResultado(String acao, String palavra)
+	private void geradorDeResultado(String acao, String palavra)
 	{
 		if( acao == "i ")
 		{
@@ -238,7 +239,7 @@ public class geradorDeString
 	 *  uma palavra que será gravada no arquivo entrada.txt
 	 *  @param String linha{"acao"+" "+"palavra"}
 	 */
-	public void gravarNoArquivoDeEntradas(String linha)
+	private void gravarNoArquivoDeEntradas(String linha)
 	{
 		entrada.adicionar(linha);
 	}
@@ -249,7 +250,7 @@ public class geradorDeString
 	 * boolean{ true - V | false - F}
 	 * @param boolean saida
 	 */
-	public void gravarNoArquivoDeResultado(boolean valorSaida)
+	private void gravarNoArquivoDeResultado(boolean valorSaida)
 	{
 		if(valorSaida == true)
 		{
@@ -311,7 +312,7 @@ public class geradorDeString
 	 * @param palavra
 	 * @return
 	 */
-	protected boolean podeBuscar(String palavra)
+	public boolean podeBuscar(String palavra)
 	{
 		int posicao = listDePalavras.lastIndexOf(palavra);
 		if(posicao != -1)
