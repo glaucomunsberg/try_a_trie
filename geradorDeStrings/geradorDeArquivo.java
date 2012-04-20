@@ -26,13 +26,9 @@ public class geradorDeArquivo
 		}
 		catch( SecurityException securityException)
 		{
-			System.err.println("você não tem acesso de escrita");
-			System.exit(1);
 		}
 		catch( FileNotFoundException fileNotFoundException)
 		{
-			System.err.println("erro ao criar arquivo");
-			System.exit(1);
 		}
 	}
 	
@@ -52,11 +48,9 @@ public class geradorDeArquivo
 		}
 		catch( FormatterClosedException formatterClosedException)
 		{
-			System.err.println("Erro ao escrever");
 		}
 		catch( NoSuchElementException element)
 		{
-			System.err.println("Invalida entrada!");
 		}
 	}
 	
@@ -65,7 +59,7 @@ public class geradorDeArquivo
 	 * 	fecha o arquivo aberto pelo
 	 * 		método openFile
 	 */
-	public void closeFile()
+	public void fechar()
 	{
 		if(saida != null)
 		{

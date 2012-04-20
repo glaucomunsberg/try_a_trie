@@ -31,7 +31,19 @@ Versão 0.4
 	Correção
 		GeradorDeArquivo
 			Correção no nome do arquivo de saida
-	Implementacao
+	Implementação
 		ComparadorDeString
-			Compara o arquivo saida_desejada.txt com o saida.txt e aponta as diferenças
-				entre eles
+			Compara o arquivo saida_desejada.txt com o saida.txt e aponta as diferenças entre eles
+			
+Versão 0.5
+	Correção
+		Inserindo comentários para auxíliar a leitura do código
+		Remoção de qualquer alerta ou mensagem indevida que havia
+	Implementação
+		buscarString - Busca a string dentro da árvore trie
+		showDebug    - Serve para debugar o código
+
+
+Houston, we have a problem?
+	Sim, não consegui ainda implementar o remove u.u
+		
