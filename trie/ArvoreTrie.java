@@ -2,7 +2,6 @@
  * Classe do objeto arvore trie
  * 	Nodo raiz                     - O nodo pai de todos
  * 	LeitorDeArquivo lerArquivo    - Faz a leitura do arquivo entrada.txt com os comandos em forma de strings
- * 	geradorDeArquivo gerarArquivo - Gera o arquivo saida.txt com as respostas dos comandos obtidos do arquivo entrada.txt
  *  boolean isDebug               - Usado para fazer uma debugging da execução do código
  *  @author glaucomunsberg@gmail.com
  */
@@ -13,13 +12,12 @@ public class ArvoreTrie
 {
 	private Nodo raiz;
 	private LeitorDeArquivo lerArquivo;
-	private geradorDeArquivo gerarArquivo;
 	public boolean isDebug;
 	
 	public static void main(String args[] )
 	{
 		ArvoreTrie trie = new ArvoreTrie();
-		trie.setIsDebug(true);
+		trie.setIsDebug(false);
 		trie.iniciar();
 		trie.finalizar();
 	}
@@ -29,8 +27,8 @@ public class ArvoreTrie
 		raiz = new Nodo();
 		raiz.isFinal = false; 
 		raiz.numeroDePrefixo =0;
+		raiz.prev = null;
 		lerArquivo = new LeitorDeArquivo("entrada.txt");
-		gerarArquivo = new geradorDeArquivo("saida.txt");
 		setIsDebug(false);
 	}
 	
@@ -101,14 +99,13 @@ public class ArvoreTrie
 			stringAcaoPalavra.delete(0, stringAcaoPalavra.length());
 			stringLida = lerArquivo.lerLinha();
 		}
-		System.out.printf("a na posicao: %d\nz na posicao: %d", posicaoDoChar('a'), posicaoDoChar('z'));
+		
 	}
 	
 	
 	public void finalizar()
 	{
 		lerArquivo.fechar();
-		gerarArquivo.fechar();
 	}
 	/**
 	 * Método que insere uma string dentro da trie
@@ -139,9 +136,10 @@ public class ArvoreTrie
 				if( nodo.nodos[intChar].nodos == null)
 				{
 					if( this.isDebug)
-						showDebug("Nodo não criado volta null\n");
+						showDebug("Nodo não criado volta false\n");
 					return false;
 				}
+				nodo.nodos[intChar].prev = nodo;
 				if( this.isDebug)
 					showDebug(String.format("Inserido nodo %d\n", intChar));
 			}
@@ -156,16 +154,71 @@ public class ArvoreTrie
 	
 	/**
 	 * Método para remover uma string dentro da trie
+	 * 	Primeiro ele procura pela string, é o mesmo algoritmo do
+	 * 	buscar, porém com um passo a mais.
 	 * @param Char[] string
 	 * @return boolean { true - se removeu | false - se não removeu }
 	 */
 	protected boolean removerString(char[] string)
 	{
-		for( int a = 2; a < string.length; a++)
+		Nodo nodo = raiz;
+		if( this.isDebug)
+			showDebug(String.format("Removendo: %s\n", Arrays.toString(string)) );
+		/*
+		 * Primeiro passo do remover é buscar a string até o final. 
+		 * Isso faz com que o nodo esteja no nodo mais distante da string
+		 * 	para que se possa voltar deletando
+		 */
+		int a;
+		for( a = 2; a < string.length; a++)
 		{
-			System.out.printf("%s",string[a] );
+			if( nodo.nodos[this.posicaoDoChar(string[a])] != null)
+			{
+				if( this.isDebug)
+					showDebug(String.format("buscou para remover posicao %d\n", this.posicaoDoChar(string[a])));
+				nodo = nodo.nodos[this.posicaoDoChar(string[a])];
+			}
+			else
+			{
+				if( this.isDebug)
+					showDebug("não achou\n");
+				return false;
+			}
 		}
-		return true;
+		if( this.isDebug)
+			showDebug(String.format("Removendo primeira parte nodo %s\n", a) );
+		/*
+		 * Segundo passo é marcar esse nodo como não final, pois
+		 * 	estaremos removendo a palavra que está até aqui. Depois
+		 * 	enquanto ele não tiver prev null (raiz)
+		 */
+		nodo.isFinal = false;
+		Nodo temp;
+		
+		while( nodo.prev != null)
+		{
+			if( nodo.numeroDePrefixo <= 0)
+			{
+				temp = nodo;
+				nodo = nodo.prev;
+				nodo.numeroDePrefixo--;
+				temp.finalize();
+				temp = null;
+			}
+			else
+			{
+				nodo = nodo.prev;
+			}
+		}
+		if( nodo.equals(raiz))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
 	}
 	
 	/**
@@ -180,6 +233,7 @@ public class ArvoreTrie
 		Nodo nodo = raiz;
 		if( this.isDebug)
 			showDebug(String.format("Buscar: %s\n", Arrays.toString(string)));
+		
 		for( int a = 2; a < string.length; a++)
 		{
 			if( nodo.nodos[this.posicaoDoChar(string[a])] != null)
@@ -201,19 +255,19 @@ public class ArvoreTrie
 	}
 	
 	/**
-	 * Recebe um boolean que será gravado no
-	 * 	arquivo de saida saida.txt
+	 * Recebe um boolean que faz com que seja imprimido
+	 *  V ou F de acordo com o seu valor
 	 * @param boolean saida
 	 */
 	protected void geradorDeSaida(boolean saida)
 	{
 		if(saida)
 		{
-			gerarArquivo.adicionar("V\n");
+			System.out.println("V");
 		}
 		else
 		{
-			gerarArquivo.adicionar("F\n");
+			System.out.println("F");
 		}
 	}
 	

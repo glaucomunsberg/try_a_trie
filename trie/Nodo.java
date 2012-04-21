@@ -8,13 +8,21 @@
  */
 
 public class Nodo {
-	protected boolean isFinal = false;
+	protected boolean isFinal;
 	protected Nodo nodos[];
 	protected int numeroDePrefixo;
+	protected Nodo prev;
 	
 	public Nodo()
 	{
+		isFinal = false;
 		nodos = new Nodo[26];
+		numeroDePrefixo = 0;
+		prev = null;
+	}
+	protected void finalize()
+	{
+		
 	}
 
 }

@@ -32,23 +32,31 @@ Versão 0.4
 		GeradorDeArquivo
 			Correção no nome do arquivo de saida
 	Implementação
-		ComparadorDeString
-			Compara o arquivo saida_desejada.txt com o saida.txt e aponta as diferenças entre eles
+		 Classe ComparadorDeString Compara o arquivo saida_desejada.txt com o saida.txt e aponta as diferenças entre eles
 			
 Versão 0.5
 	Correção
-		Inserindo comentários para auxíliar a leitura do código
-		Remoção de qualquer alerta ou mensagem indevida que havia
+		Inserido comentários para auxíliar a leitura do código
+		Remoção de qualquer alerta nas classes
 	Implementação
-		buscarString - Busca a string dentro da árvore trie
-		showDebug    - Serve para debugar o código
+		ArvoreTrie
+			buscarString busca a string dentro da árvore trie
+			showDebug serve para debugar o código
 
 Versão 0.6
 	Correções
-		A lógica para o final do nodo estava invertida
-		Correção de encapsulamento
+		Correções gerais de encapsulamento
 		Mais documentação
+		ArvoreTrie
+			A lógica para o final do nodo estava invertida
+		
+Versão 0.7
+	Correções
+		ArvoreTrie
+			geradorDeSaida agora dentro da espeficicação do trabalho
+			removerString remove a string escolhida
+		Nodo
+			Correção do nodo, elemento Nodo prev que aux. remoção e inicialização
 
 Houston, we have a problem?
-	Sim, não foi resolvido o problema do remover (Cod. ainda não inserido no ArvoreTrie por instabilidade)
 	Sim, aparente desperdício de memória
