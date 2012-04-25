@@ -25,7 +25,7 @@ public class ArvoreTrie
 	public ArvoreTrie()
 	{
 		raiz = new Nodo();
-		raiz.isFinal = false; 
+		raiz.isFinal = false;
 		raiz.numeroDePrefixo =0;
 		raiz.prev = null;
 		lerArquivo = new LeitorDeArquivo("entrada.txt");

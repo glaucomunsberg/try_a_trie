@@ -54,9 +54,11 @@ Versão 0.7
 	Correções
 		ArvoreTrie
 			geradorDeSaida agora dentro da espeficicação do trabalho
-			removerString remove a string escolhida
 		Nodo
 			Correção do nodo, elemento Nodo prev que aux. remoção e inicialização
+	Implementação
+		ArvoreTrie
+			removerString remove a string escolhida
 
 Houston, we have a problem?
 	Sim, aparente desperdício de memória
