@@ -59,6 +59,19 @@ Versão 0.7
 	Implementação
 		ArvoreTrie
 			removerString remove a string escolhida
+Versão 0.8
+        Correções
+                ArvoreTrie
+                        Correção de lógica de como insere e remove para ficar de acordo com a especificação
+                LeitorDeArquivo
+                        Remoção do mesmo do mesmo,por não ser mais útil no projeto
+		ComparadorDeArquivo
+			Removido por haver dependência da classe LeitorDeArquivo
+                GeradorDeString
+                        Correção para agora adicionar ao final do arquivo o "@" como caracter de finalização da execução
+        Implementação
+                Nodo
+                        Removendo resquísios antes do Garbage Collector passar
 
 Houston, we have a problem?
 	Sim, aparente desperdício de memória

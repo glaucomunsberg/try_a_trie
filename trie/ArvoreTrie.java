@@ -7,12 +7,14 @@
  */
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class ArvoreTrie 
 {
 	private Nodo raiz;
-	private LeitorDeArquivo lerArquivo;
 	public boolean isDebug;
+        protected Scanner leitor;
+        
 	
 	public static void main(String args[] )
 	{
@@ -28,8 +30,8 @@ public class ArvoreTrie
 		raiz.isFinal = false;
 		raiz.numeroDePrefixo =0;
 		raiz.prev = null;
-		lerArquivo = new LeitorDeArquivo("entrada.txt");
 		setIsDebug(false);
+                leitor = new Scanner(System.in);
 	}
 	
 	/**
@@ -59,10 +61,9 @@ public class ArvoreTrie
 	{
 		char palavraChar[];
 		StringBuilder stringAcaoPalavra = new StringBuilder();
-		String stringLida = lerArquivo.lerLinha();
+		String stringLida = leitor.nextLine();
 		
-		while( stringLida != null )
-		{
+		do{
 			/*
 			 * Pega a string e a converte para um array de char
 			 */
@@ -77,6 +78,10 @@ public class ArvoreTrie
 			 * 	 um boolean sobre a ação que é repassado para o gerador de
 			 * 	 saída que grava arquivo saida.txt
 			 */
+                        if(palavraChar[0] == '@')
+                        {
+                            finalizar();
+                        }
 			if( palavraChar[0] == 'i')
 			{
 				geradorDeSaida( inserirString( palavraChar ) );
@@ -97,15 +102,18 @@ public class ArvoreTrie
 			 * Limpa o StringBuiler e faz a leitura da próxima linha
 			 */
 			stringAcaoPalavra.delete(0, stringAcaoPalavra.length());
-			stringLida = lerArquivo.lerLinha();
-		}
+			stringLida = leitor.nextLine();
+		}while( stringLida != null );
 		
 	}
 	
 	
 	public void finalizar()
 	{
-		lerArquivo.fechar();
+		//if( this.isDebug)
+			//showDebug("Finalizado!\n" );
+                System.out.print("@\n");
+                System.exit(0);
 	}
 	/**
 	 * Método que insere uma string dentro da trie
@@ -116,8 +124,8 @@ public class ArvoreTrie
 	{
 		Nodo nodo = raiz;
 		nodo.numeroDePrefixo++;	//Diz que ali tem mais um nodo
-		if( this.isDebug)
-			showDebug(String.format("Inserindo: %s\n", Arrays.toString(string)) );
+		//if( this.isDebug)
+			//showDebug(String.format("Inserindo: %s\n", Arrays.toString(string)) );
 		for( int a = 2; a < string.length; a++)
 		{			
 			int intChar = this.posicaoDoChar(string[a]);
@@ -135,19 +143,21 @@ public class ArvoreTrie
 				 */
 				if( nodo.nodos[intChar].nodos == null)
 				{
-					if( this.isDebug)
-						showDebug("Nodo não criado volta false\n");
+					//if( this.isDebug)
+						//showDebug("Nodo não criado volta false\n");
+                                        System.out.printf("FALTOU MEMORIA");
+                                        System.exit(1);
 					return false;
 				}
 				nodo.nodos[intChar].prev = nodo;
-				if( this.isDebug)
-					showDebug(String.format("Inserido nodo %d\n", intChar));
+				//if( this.isDebug)
+					//showDebug(String.format("Inserido nodo %d\n", intChar));
 			}
 			nodo.nodos[intChar].numeroDePrefixo++;
 			nodo = nodo.nodos[intChar];
 		}
-		if( this.isDebug)
-			showDebug("\n");
+		//if( this.isDebug)
+			//showDebug("\n");
 		nodo.isFinal = true;
 		return true;
 	}
@@ -162,8 +172,8 @@ public class ArvoreTrie
 	protected boolean removerString(char[] string)
 	{
 		Nodo nodo = raiz;
-		if( this.isDebug)
-			showDebug(String.format("Removendo: %s\n", Arrays.toString(string)) );
+		//if( this.isDebug)
+			//showDebug(String.format("Removendo: %s\n", Arrays.toString(string)) );
 		/*
 		 * Primeiro passo do remover é buscar a string até o final. 
 		 * Isso faz com que o nodo esteja no nodo mais distante da string
@@ -174,19 +184,19 @@ public class ArvoreTrie
 		{
 			if( nodo.nodos[this.posicaoDoChar(string[a])] != null)
 			{
-				if( this.isDebug)
-					showDebug(String.format("buscou para remover posicao %d\n", this.posicaoDoChar(string[a])));
+				//if( this.isDebug)
+					//showDebug(String.format("buscou para remover posicao %d\n", this.posicaoDoChar(string[a])));
 				nodo = nodo.nodos[this.posicaoDoChar(string[a])];
 			}
 			else
 			{
-				if( this.isDebug)
-					showDebug("não achou\n");
+				//if( this.isDebug)
+					//showDebug("não achou\n");
 				return false;
 			}
 		}
 		if( this.isDebug)
-			showDebug(String.format("Removendo primeira parte nodo %s\n", a) );
+			//showDebug(String.format("Removendo primeira parte nodo %s\n", a) );
 		/*
 		 * Segundo passo é marcar esse nodo como não final, pois
 		 * 	estaremos removendo a palavra que está até aqui. Depois
@@ -231,15 +241,15 @@ public class ArvoreTrie
 	protected boolean buscarString(char[] string)
 	{
 		Nodo nodo = raiz;
-		if( this.isDebug)
-			showDebug(String.format("Buscar: %s\n", Arrays.toString(string)));
+		//if( this.isDebug)
+			//showDebug(String.format("Buscar: %s\n", Arrays.toString(string)));
 		
 		for( int a = 2; a < string.length; a++)
 		{
 			if( nodo.nodos[this.posicaoDoChar(string[a])] != null)
 			{
-				if( this.isDebug)
-					showDebug(String.format("buscou posicao %d\n", this.posicaoDoChar(string[a])));
+				//if( this.isDebug)
+					//showDebug(String.format("buscou posicao %d\n", this.posicaoDoChar(string[a])));
 				nodo = nodo.nodos[this.posicaoDoChar(string[a])];
 			}
 			else
@@ -249,8 +259,8 @@ public class ArvoreTrie
 				return false;
 			}
 		}
-		if( this.isDebug)
-			showDebug("\n");
+		//if( this.isDebug)
+			//showDebug("\n");
 		return nodo.isFinal;
 	}
 	

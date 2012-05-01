@@ -22,7 +22,9 @@ public class Nodo {
 	}
 	protected void finalize()
 	{
-		
+		nodos = null;
+                isFinal = false;
+                prev = null;
 	}
 
 }

@@ -62,7 +62,9 @@ public class geradorDeString
 	 */
 	public void finalizarProcesso()
 	{
+                entrada.adicionar("@\n");
 		entrada.fechar();
+                saida.adicionar("@\n");
 		saida.fechar();
 		JOptionPane.showMessageDialog(null, String.format("Foram gerado os arquivos entrada.txt e saida.txt\n Total de palavras geradas: %d\nPalavras ao final da execução: %d",this.numeroDePalavras, this.listDePalavras.size()),"Aleatoriedade não aleatória assim", JOptionPane.PLAIN_MESSAGE);
 	}
