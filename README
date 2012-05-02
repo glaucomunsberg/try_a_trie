@@ -1,77 +1,101 @@
-Versão 0.0
-	Configuração do GitHub
+##########################################################################
+#                       Try a trie - Trabalho de EDII
+##########################################################################
+#
+# 1.Introduçao
+# 2.Como foi programado
+# 3.Como executar execução
+# 4.Resultados obtidos
+# 5.Manifesto
+#
+# @autor   Glauco Roberto Munsberg dos Santos
+# @github  git@github.com:glaucomunsberg/try_a_trie.git
+# @version 0.9
+#
+##########################################################################
+# 1.Introduçao
+##########################################################################
+#
+#   O projeto Try_a_trie é o resultado do trabalho proposto pelo Professor
+#   Ricardo Araújo na disciplina de EDII. A especificação do trabalho se
+#   encontra dividido em tuas parte. Um de criação de uma árvore Trie: URL
+#   http://avainstitucional.ufpel.edu.br/mod/assignment/view.php?id=10135
+#   e a segunda parte do trabalho, referente a procura da maior palindroma
+#   encotra-se na URL: 
+#   http://avainstitucional.ufpel.edu.br/mod/assignment/view.php?id=30353
+#
+#   O trabalho foi versionado no GitHub como apoio a programação, para
+#   maior detalhamento das versoes consulte o arquivo "version.txt". O
+#   trabalho foi programado e testado em um computador:
+#    * Pentium Dual Core 2.2GHz
+#    * 2,5GB Memória RAM
+#    * Ubuntu 12.04 32-bits, área de troca de 1Gb para auxílio, com Java7
+#      e demais configurações padrões.
+#
+##########################################################################
+# 2.Como foi programado
+##########################################################################
+#
+##########################################################################
+# 3.Como executar execução
+##########################################################################
+#
+##########################################################################
+# 4.Resultados obtidos
+##########################################################################
+#
+#   Abaixo temos alguns dos resultados obtidos pelas simulações, não
+#   sendo aqui mensionadas as simulações de teste realizadas anteriormente
+#   a verificação dos resultados iguais entre a de saída esperada com a
+#   saída resultante da execução do programa.
+#
+# 4.1 Simulações com a árvore trie
+# 4.1.1 Simulação 1
+#   O programa rodou durante 0.3 segundos executando 1000 operações entre
+#   inserir, remover e buscar. Foi utilizado 1mil palavras de 1 até 100
+#   letras repeitando a aleatóriedade. Para isso foi utilizado uma MVJ
+#   de no mínimo 500Mb de Memória e até no máximo 1Gb, obtendo resultado
+#   satisfatório
+#   Dados:
+#     Nº de Palavras   : 100
+#     Tamanho Max. pal : 1000
+#     Nº de pal. exec  : 1mil
+#     Tempo de execução: 0.3s
+#     Finalizou execu  : Sim
+# 4.1.2 Simulação 2
+#   Simulação inversa a 4.1.1 sendo 100 palavras de até 1000.
+#   Dados:
+#     Nº de Palavras   : 100
+#     Tamanho Max. pal : 1000
+#     Nº de pal. exec  : 100
+#     Tempo de execução: 0.3s
+#     Finalizou execu  : Sim
+# 4.1.3 Sumulação 3
+#   Simulação realizada com a mesma confi da 4.1.1 e 4.1.2, executando um
+#   teste de força com uma única palavra de 25mil caractéres inserida,
+#   buscada, removida, buscada, inserida, buscada e removida, nesta ordem,
+#   com sucesso
+#   Dados:
+#     Nº de Palavras   : 2
+#     Tamanho da pal   : 25mil
+#     Nº de pal. exec  : 7
+#     Tempo de execução: 0.35s
+#     Finalizou execu  : Sim
+# 4.1.4 Simulação 2
+#   O programa rodou durante 190 minutos executando 2411 operações entre
+#   inserir, remover e buscar. Foi utilizado 10mil palavras de 1 até 1000
+#   letras respeitando a aleatóriedade. Para isso foi utilizado uma MVJ
+#   de no mínimo 2Gb de Memória e até no máximo 2,5Gb, porém o processo
+#   foi morto pelo sistema por falta de memória, mas até a posição final
+#   da execução o resultado foi identico ao esperado.
+#   Dados:
+#     Nº de Palavras   : 10mil
+#     Nº de pal. exec  : 2411
+#     Tempo de execução: 190min
+#     Finalizou execu  : Não
+#
+##########################################################################
+# 5.Manifesto
+##########################################################################
+#
 
-Versão 0.1
-	Criacao do Automatico
-
-Versão 0.2
-	Implementação
-		GeradorDeString
-			inserido ao código
-		GeradorDeArquivo
-			importado o código do gerador de arquivos (cod. do projeto Javeco)
-		Nodo
-			criada a classe que serve como nodo na trie
-		ArvoreTrie
-			criado a classe da árvore
-		LeitorDeArquivo
-			importado o codigo para leitura de arquivos (cod. do projeto Javeco)
-	
-Versão 0.3
-	Correção
-		GeradorDeString
-			gerador de strings com letras minúsculas
-	Implementação
-		ArvoreTrie
-			correção de lógicao
-			posicaoDoChar - retorna int de 0 a 25 para mapear numa posicao
-			inserirString - Insere na trie
-			
-Versão 0.4
-	Correção
-		GeradorDeArquivo
-			Correção no nome do arquivo de saida
-	Implementação
-		 Classe ComparadorDeString Compara o arquivo saida_desejada.txt com o saida.txt e aponta as diferenças entre eles
-			
-Versão 0.5
-	Correção
-		Inserido comentários para auxíliar a leitura do código
-		Remoção de qualquer alerta nas classes
-	Implementação
-		ArvoreTrie
-			buscarString busca a string dentro da árvore trie
-			showDebug serve para debugar o código
-
-Versão 0.6
-	Correções
-		Correções gerais de encapsulamento
-		Mais documentação
-		ArvoreTrie
-			A lógica para o final do nodo estava invertida
-		
-Versão 0.7
-	Correções
-		ArvoreTrie
-			geradorDeSaida agora dentro da espeficicação do trabalho
-		Nodo
-			Correção do nodo, elemento Nodo prev que aux. remoção e inicialização
-	Implementação
-		ArvoreTrie
-			removerString remove a string escolhida
-Versão 0.8
-        Correções
-                ArvoreTrie
-                        Correção de lógica de como insere e remove para ficar de acordo com a especificação
-                LeitorDeArquivo
-                        Remoção do mesmo do mesmo,por não ser mais útil no projeto
-		ComparadorDeArquivo
-			Removido por haver dependência da classe LeitorDeArquivo
-                GeradorDeString
-                        Correção para agora adicionar ao final do arquivo o "@" como caracter de finalização da execução
-        Implementação
-                Nodo
-                        Removendo resquísios antes do Garbage Collector passar
-
-Houston, we have a problem?
-	Sim, aparente desperdício de memória

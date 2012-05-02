@@ -6,11 +6,11 @@
  *  @author glaucomunsberg@gmail.com
  */
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArvoreTrie 
-{
+{  
+        private char palavraChar[];
 	private Nodo raiz;
 	public boolean isDebug;
         protected Scanner leitor;
@@ -59,7 +59,7 @@ public class ArvoreTrie
 	 */
 	public void iniciar()
 	{
-		char palavraChar[];
+		
 		StringBuilder stringAcaoPalavra = new StringBuilder();
 		String stringLida = leitor.nextLine();
 		
@@ -195,7 +195,7 @@ public class ArvoreTrie
 				return false;
 			}
 		}
-		if( this.isDebug)
+		//if( this.isDebug)
 			//showDebug(String.format("Removendo primeira parte nodo %s\n", a) );
 		/*
 		 * Segundo passo é marcar esse nodo como não final, pois
@@ -213,7 +213,6 @@ public class ArvoreTrie
 				nodo = nodo.prev;
 				nodo.numeroDePrefixo--;
 				temp.finalize();
-				temp = null;
 			}
 			else
 			{
@@ -273,11 +272,11 @@ public class ArvoreTrie
 	{
 		if(saida)
 		{
-			System.out.println("V");
+			System.out.println("v");
 		}
 		else
 		{
-			System.out.println("F");
+			System.out.println("f");
 		}
 	}
 	

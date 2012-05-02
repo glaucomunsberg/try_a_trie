@@ -20,11 +20,10 @@ public class Nodo {
 		numeroDePrefixo = 0;
 		prev = null;
 	}
+        
 	protected void finalize()
 	{
-		nodos = null;
                 isFinal = false;
-                prev = null;
 	}
 
 }
