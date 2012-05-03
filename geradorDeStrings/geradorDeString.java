@@ -22,7 +22,8 @@ public class geradorDeString
 	private int maiorNumeroDeLetras;			//O maior número de letras que pode haver em cada palavra
 	private int tipodeOperacao;					//Tipo da operacao que está sendo realizada como Inserir, Remover e Buscar
 	private int tipoDeString;					//Tipo de string por "palavras" ou "DNA"
-	private geradorDeArquivo saida, entrada;	//Classe que insere na saida.txt e entrada.txt
+	private boolean isTamanhoFixo;
+        private geradorDeArquivo saida, entrada;	//Classe que insere na saida.txt e entrada.txt
 	
 	
 	public static void main(String args[])
@@ -50,8 +51,17 @@ public class geradorDeString
 	 */
 	public void começarProcesso(){
 		numeroDePalavras = Integer.parseInt( JOptionPane.showInputDialog(null, "Quantas Strings você quer gerar?!","Gerador Random", JOptionPane.PLAIN_MESSAGE));
-		maiorNumeroDeLetras = Integer.parseInt( JOptionPane.showInputDialog(null, "O programa gerará \'palavras\' aleatórioas de 1 até quantas letras?!","Gerador Random", JOptionPane.PLAIN_MESSAGE));
-		tipoDeString = Integer.parseInt( JOptionPane.showInputDialog(null, "Qual tipo de palavra deseja imprimir?\n1.Palavras com 26 caracteres\n2.Strings de DNA","Tipos de palavras", JOptionPane.PLAIN_MESSAGE));
+                maiorNumeroDeLetras = Integer.parseInt( JOptionPane.showInputDialog(null, "O programa gerará \'palavras\' de quantas letras?!","Gerador Random", JOptionPane.PLAIN_MESSAGE));
+                int tamanhoFixo = Integer.parseInt( JOptionPane.showInputDialog(null, " tamanho das palavras geradas são de tamanho fixo?\n1.Sim\n2.Não","Tamanho das palavras", JOptionPane.PLAIN_MESSAGE));
+		if( tamanhoFixo == 1)
+                {
+                    isTamanhoFixo = true;
+                }
+                else
+                {
+                    isTamanhoFixo = true;
+                }
+                tipoDeString = Integer.parseInt( JOptionPane.showInputDialog(null, "Qual tipo de palavra deseja imprimir?\n1.Palavras com 26 caracteres\n2.Strings de DNA","Tipos de palavras", JOptionPane.PLAIN_MESSAGE));
 		System.out.printf("\nTecnologia: Processador Recursivo Corp.\nAguarde enquanto nossos melhores macacos sorteiam as letras...\n");
 		geradorDeTiposDeAcoes();
 		
@@ -129,6 +139,9 @@ public class geradorDeString
 		 */
 		while(tamanhoDaPalavraAtual == 0)
 		{
+                    if( this.isTamanhoFixo )
+                        tamanhoDaPalavraAtual = this.maiorNumeroDeLetras;
+                    else
 			tamanhoDaPalavraAtual = random.nextInt(maiorNumeroDeLetras+1);
 		}
 
@@ -169,6 +182,9 @@ public class geradorDeString
 		 */
 		while(tamanhoDaPalavraAtual == 0)
 		{
+                    if( this.isTamanhoFixo )
+                        tamanhoDaPalavraAtual = this.maiorNumeroDeLetras;
+                    else
 			tamanhoDaPalavraAtual = random.nextInt(maiorNumeroDeLetras+1);
 		}
 
