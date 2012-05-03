@@ -272,11 +272,11 @@ public class geradorDeString
 	{
 		if(valorSaida == true)
 		{
-			saida.adicionar("V\n");
+			saida.adicionar("v\n");
 		}
 		else
 		{
-			saida.adicionar("F\n");
+			saida.adicionar("f\n");
 		}
 	}
 	
