@@ -202,6 +202,10 @@ public class ArvoreTrie
 		 * 	estaremos removendo a palavra que está até aqui. Depois
 		 * 	enquanto ele não tiver prev null (raiz)
 		 */
+                if( nodo.isFinal != true)
+                {
+                    return false;
+                }
 		nodo.isFinal = false;
 		Nodo temp;
 		

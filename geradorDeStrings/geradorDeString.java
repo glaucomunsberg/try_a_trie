@@ -59,7 +59,7 @@ public class geradorDeString
                 }
                 else
                 {
-                    isTamanhoFixo = true;
+                    isTamanhoFixo = false;
                 }
                 tipoDeString = Integer.parseInt( JOptionPane.showInputDialog(null, "Qual tipo de palavra deseja imprimir?\n1.Palavras com 26 caracteres\n2.Strings de DNA","Tipos de palavras", JOptionPane.PLAIN_MESSAGE));
 		System.out.printf("\nTecnologia: Processador Recursivo Corp.\nAguarde enquanto nossos melhores macacos sorteiam as letras...\n");

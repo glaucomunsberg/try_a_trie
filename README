@@ -24,6 +24,7 @@
 #   encotra-se na URL: 
 #   http://avainstitucional.ufpel.edu.br/mod/assignment/view.php?id=30353
 #   desenvolvido de 15 de Abril de 2012 a 8 de junho de 2012
+#   
 #   O trabalho foi versionado no GitHub como apoio a programação, para
 #   maior detalhamento das versoes consulte o arquivo "version.txt". O
 #   trabalho foi programado e testado em um computador:
@@ -39,6 +40,12 @@
 ##########################################################################
 # 3.Como executar execução
 ##########################################################################
+#   Para executar o gerador basta digitar no seu terminal:
+#
+#   $ java -Xms500m -Xmx1500m ArvoreTrie
+#
+#   Obs.: Os parametros -Xms e Xmx reserva 500Mb no mínimo e no máximo
+#   1,5Gb de Memória RAM para executar o processo sem estourar a heap
 #
 ##########################################################################
 # 4.Resultados obtidos

@@ -1,0 +1,89 @@
+Versão 0.0
+	Configuração do GitHub
+
+Versão 0.1
+	Criacao do Automatico
+
+Versão 0.2
+	Implementação
+		GeradorDeString
+			inserido ao código
+		GeradorDeArquivo
+			importado o código do gerador de arquivos (cod. do projeto Javeco)
+		Nodo
+			criada a classe que serve como nodo na trie
+		ArvoreTrie
+			criado a classe da árvore
+		LeitorDeArquivo
+			importado o codigo para leitura de arquivos (cod. do projeto Javeco)
+	
+Versão 0.3
+	Correção
+		GeradorDeString
+			gerador de strings com letras minúsculas
+	Implementação
+		ArvoreTrie
+			correção de lógicao
+			posicaoDoChar - retorna int de 0 a 25 para mapear numa posicao
+			inserirString - Insere na trie
+			
+Versão 0.4
+	Correção
+		GeradorDeArquivo
+			Correção no nome do arquivo de saida
+	Implementação
+		 Classe ComparadorDeString Compara o arquivo saida_desejada.txt com o saida.txt e aponta as diferenças entre eles
+			
+Versão 0.5
+	Correção
+		Inserido comentários para auxíliar a leitura do código
+		Remoção de qualquer alerta nas classes
+	Implementação
+		ArvoreTrie
+			buscarString busca a string dentro da árvore trie
+			showDebug serve para debugar o código
+
+Versão 0.6
+	Correções
+		Correções gerais de encapsulamento
+		Mais documentação
+		ArvoreTrie
+			A lógica para o final do nodo estava invertida
+		
+Versão 0.7
+	Correções
+		ArvoreTrie
+			geradorDeSaida agora dentro da espeficicação do trabalho
+		Nodo
+			Correção do nodo, elemento Nodo prev que aux. remoção e inicialização
+	Implementação
+		ArvoreTrie
+			removerString remove a string escolhida
+Versão 0.8
+        Correções
+                ArvoreTrie
+                        Correção de lógica de como insere e remove para ficar de acordo com a especificação
+                LeitorDeArquivo
+                        Remoção do mesmo do mesmo,por não ser mais útil no projeto
+		ComparadorDeArquivo
+			Removido por haver dependência da classe LeitorDeArquivo
+                GeradorDeString
+                        Correção para agora adicionar ao final do arquivo o "@" como caracter de finalização da execução
+        Implementação
+                Nodo
+                        Removendo resquísios antes do Garbage Collector passar
+Versão 0.9
+        Correção
+                ArvoreTrie
+                        Correção do parametro e simplificação da finalização do nodo
+                        Correção no remover
+                GeradorDeString
+                        Agora gera palavras de tamanho fixo
+	Implementação
+		Versões
+			Substitui a função do arquivo REAME, para que o antigo arquivo dê espaço a uma dissertação sobre o funciomanto do programa
+
+Houston, we have a problem?
+	Yes, programa apesar de geral resultado correto, tem um limite de execução que faz com que não 
+	dê falha de alocação de memória, porém o programa aparentemento não executa a próxima instrução
+	e mantém a execução. Contudo o processo é morto pelo OS, mais detalhes leia no arquivo README 4.1.4
