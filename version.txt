@@ -75,10 +75,12 @@ Versão 0.8
 Versão 0.9
         Correção
                 ArvoreTrie
-                        Correção do parametro e simplificação da finalização do nodo
-                        Correção no remover
+                        Correção do parametro e simplificação da finalização do Nodo (evita a chamada de Garbage Colletor desnecessariamente)
+                        Correção no remover que levava a uma incoereção
                 GeradorDeString
                         Agora gera palavras de tamanho fixo
+		ArvoreDeSufixo
+			Implementação a partir de um fork do arquivo 'ArvoreTrie'
 	Implementação
 		Versões
 			Substitui a função do arquivo REAME, para que o antigo arquivo dê espaço a uma dissertação sobre o funciomanto do programa

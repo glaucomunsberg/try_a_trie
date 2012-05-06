@@ -74,9 +74,8 @@ public class geradorDeString
 	{
                 entrada.adicionar("@\n");
 		entrada.fechar();
-                saida.adicionar("@\n");
 		saida.fechar();
-		JOptionPane.showMessageDialog(null, String.format("Foram gerado os arquivos entrada.txt e saida.txt\n Total de palavras geradas: %d\nPalavras ao final da execução: %d",this.numeroDePalavras, this.listDePalavras.size()),"Aleatoriedade não aleatória assim", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null, String.format("Foram gerado os arquivos entrada.txt e saida_desejada.txt\n Total de palavras geradas: %d\nPalavras ao final da execução: %d",this.numeroDePalavras, this.listDePalavras.size()),"Aleatoriedade não tão aleatória assim", JOptionPane.PLAIN_MESSAGE);
 	}
 	/**
 	 * Gerador de tipos de ações dos tipos:

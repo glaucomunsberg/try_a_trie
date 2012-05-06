@@ -6,11 +6,11 @@
 # 2.Como foi programado
 # 3.Como executar execução
 # 4.Resultados obtidos
-# 5.Manifesto
+# 5.Conclusão
 #
 # @autor   Glauco Roberto Munsberg dos Santos
 # @github  git@github.com:glaucomunsberg/try_a_trie.git
-# @version 0.9
+# @version 0.9.2
 #
 ##########################################################################
 # 1.Introduçao
@@ -23,38 +23,80 @@
 #   e a segunda parte do trabalho, referente a procura da maior palindroma
 #   encotra-se na URL: 
 #   http://avainstitucional.ufpel.edu.br/mod/assignment/view.php?id=30353
-#   desenvolvido de 15 de Abril de 2012 a 8 de junho de 2012
+#   
 #   
 #   O trabalho foi versionado no GitHub como apoio a programação, para
-#   maior detalhamento das versoes consulte o arquivo "version.txt". O
+#   maior detalhamento das versões consulte o arquivo "version.txt". O
 #   trabalho foi programado e testado em um computador:
 #    * Pentium Dual Core 2.2GHz
-#    * 2,5GB Memória RAM
+#    * 2,5GB Memória RAM DDR3
 #    * Ubuntu 12.04 32-bits, área de troca de 1Gb para auxílio, com Java7
 #      e demais configurações padrões.
 #
+# 1.1 Melhor resultado obtido
+#   Usando uma JMV de no máximo 2,3Gb o melhor resultado obtido:
+# 1.1.1 Para árvore trie
+#   *Palavras de tamanho fixo
+#     Numero de Palavras: 10mil
+#     Tamanho da Palavra: até 5mil e 500
+#     Tempo de execução : 36,3s
+#
+#   *Palavras de tamanho variado
+#     Numero de Palavras: 10mil
+#     Tamanho da Palavra: 3mil
+#     Tempo de execução : 46,2s
+# 1.1.2 Para árvore de Sufixo
+#   *Palavras de tamanho fixo
+#     Numero de Palavras: 10mil
+#     Tamanho da Palavra: até 5mil e 500
+#     Tempo de execução : 36,3s
+#
+#   *Palavras de tamanho variado
+#     Numero de Palavras: 
+#     Tamanho da Palavra:
+#     Tempo de execução :
 ##########################################################################
 # 2.Como foi programado
 ##########################################################################
 #
-##########################################################################
-# 3.Como executar execução
-##########################################################################
-#   Para executar o gerador basta digitar no seu terminal:
+#   A programação do projeto Try_a_trie foi realiza por Glauco Roberto
+#   Munsberg dos Santos tendo sido desenvolvido de 15 de Abril de 2012 a 
+#   8 de junho de 2012 com a linguagem Java, utilizada pelo mesmo para
+#   que o conhecimento obtido através da cadeira Programação Orientada à
+#   Objeto (POO) pode-se ser aplicada de forma mais robusta.
 #
-#   $ java -Xms500m -Xmx1500m ArvoreTrie
+##########################################################################
+# 3.Como executar
+##########################################################################
 #
-#   Obs.: Os parametros -Xms e Xmx reserva 500Mb no mínimo e no máximo
-#   1,5Gb de Memória RAM para executar o processo sem estourar a heap
+#   Através do GitHub é possível obter todos os arquivos individuais para
+#   a execução. Podendo inclusive baixar e executar o arquivo 
+#   'geradorDeString', entretanto aqui está disponível apenas as duas
+#   arvores pelos arquivos:
+#   *arvoreTrie
+#   *arvoreDeSufixo
+#
+# 3.1 Execução da Árvore Trie
+#   Para executar a árvore trie no terminal basta digitar:
+#
+#   $ java -Xms500m -Xmx2000m ArvoreTrie
+#
+#   Obs.: Os parametros -Xms e -Xmx da JVM reserva 500Mb no mínimo e no 
+#   máximo 2Gb alocada de Memória RAM para executar o processo, estando
+#   o máximo limitado pela memória do computador onde está sendo executado
+# 3.2 Execução da Árvorede Sufixo
+#   Para executar a árvore de sufixo no terminal basta digitar:
+#
+#   $ java -Xms500m -Xmx2000m ArvoreDeSufixo
+#
 #
 ##########################################################################
 # 4.Resultados obtidos
 ##########################################################################
 #
-#   Abaixo temos alguns dos resultados obtidos pelas simulações, não
-#   sendo aqui mensionadas as simulações de teste realizadas anteriormente
-#   a verificação dos resultados iguais entre a de saída esperada com a
-#   saída resultante da execução do programa.
+#   Abaixo temos alguns dos resultados obtidos pelas simulações, todos
+#   foram realizados a partir da versão 0.9.1 onde não se dectou mais
+#   problemas de lógica na inserção, remoção e busca com arquivos médianos
 #
 # 4.1 Simulações com a árvore trie
 # 4.1.1 Simulação 1
@@ -73,7 +115,7 @@
 #   Simulação inversa a 4.1.1 sendo 100 palavras de até 1000.
 #   Dados:
 #     Nº de Palavras   : 100
-#     Tamanho Max. pal : 1000
+#     Tamanho Max. pal : 1ml
 #     Nº de pal. exec  : 100
 #     Tempo de execução: 0.3s
 #     Finalizou execu  : Sim
@@ -83,26 +125,60 @@
 #   buscada, removida, buscada, inserida, buscada e removida, nesta ordem,
 #   com sucesso
 #   Dados:
-#     Nº de Palavras   : 2
+#     Nº de Palavras   : 7
 #     Tamanho da pal   : 25mil
 #     Nº de pal. exec  : 7
 #     Tempo de execução: 0.35s
 #     Finalizou execu  : Sim
-# 4.1.4 Simulação 2
+# 4.1.4
+#   Simulação realizada com 2Gb máximo de memória para 10mil palavras
+#   aletórias de tamanho fixo de 5Mil deve tempo de execução igual a 32,3s
+#   com um pico de uso de memória igual a 2,3Gb
+#   Dados:
+#    Nº de palavras    : 10mil
+#    Tamanho da pal    : 5mil
+#    Nº de pal.exec    : 10mil
+#    Tempo de execução : 32,3s
+#    Finalizou execu   : Sim
+# 4.1.5 Simulação 5
 #   O programa rodou durante 190 minutos executando 2411 operações entre
-#   inserir, remover e buscar. Foi utilizado 10mil palavras de 1 até 1000
+#   inserir, remover e buscar. Foi utilizado 10mil palavras de 1 até 10000
 #   letras respeitando a aleatóriedade. Para isso foi utilizado uma MVJ
-#   de no mínimo 2Gb de Memória e até no máximo 2,5Gb, porém o processo
+#   de no mínimo 500Mb de Memória e até no máximo 2,5Gb, porém o processo
 #   foi morto pelo sistema por falta de memória, mas até a posição final
-#   da execução o resultado foi identico ao esperado.
+#   da execução o resultado foi identico ao esperado. Vide Conclusão
 #   Dados:
 #     Nº de Palavras   : 10mil
 #     Nº de pal. exec  : 2411
 #     Tempo de execução: 190min
 #     Finalizou execu  : Não
 #
+# 4.2 Simulações com a árvore de sufixo
+#   As simulações realizadas com árvore de sufixo foram realizadas com o
+#   mesmo padrão da árevore trie por derivar dela.
+#
 ##########################################################################
-# 5.Manifesto
+# 5.Conclusão
 ##########################################################################
 #
-
+#   Através da programação da árvore trie e de sufixo pode se obter alguns
+#   conhecimentos da própria linguagem e de como a JVM lida com a memória.
+#   Entretando ao comparar a execução em java como a linguagem C ou C++
+#   verifica-se que não é a mais adequada tendo em vista que Java não prima
+#   pela eficiencia, porém permiti que muitos erros tenha sido evitado
+#   devido a utilização de referência e não uso pondeiros de memória.
+#   Sendo assim cada nodo da trie ocupou um espaço maior do que se teria
+#   nas tuas liguagens citas acima, o que fez a execução da árvore 
+#   implementada com java ocupar mais espaço e tornar a execução menos
+#   custosa.
+#
+# 5.1 Sobre erros na execução
+#   Como foi apontado na simulação 5 (4.1.5) quando há falta de memória por
+#   parte da JVM o comportamento do programa se torna instável, em algumas
+#   pesquisas em diversas bibliografias fui alertado que este comportamento 
+#   é dado por causa do GC, pois passa repetidamente nas referências a 
+#   procura de nodos que não serão referenciado mais para serem desalocados
+#   da memória para a continuação da execução até que é morto pelo sistema.
+#   Entretando como ocorreu na simulação 4.1.5 até o ponto onde foi
+#   executado, ou seja inserção da palavra 2411 o resultado obtido foi
+#   exatamente o esperado batendo todos os resultados até então executados.

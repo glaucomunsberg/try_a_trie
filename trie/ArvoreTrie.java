@@ -28,7 +28,7 @@ public class ArvoreTrie
 	{
 		raiz = new Nodo();
 		raiz.isFinal = false;
-		raiz.numeroDePrefixo =0;
+		raiz.numeroDePrefixo = 0;
 		raiz.prev = null;
 		setIsDebug(false);
                 leitor = new Scanner(System.in);
@@ -111,8 +111,9 @@ public class ArvoreTrie
 	public void finalizar()
 	{
 		//if( this.isDebug)
-			//showDebug("Finalizado!\n" );
-                System.out.print("@\n");
+			//showDebug("Finalizado!\n");
+                raiz = null;
+                System.gc();
                 System.exit(0);
 	}
 	/**
@@ -129,10 +130,10 @@ public class ArvoreTrie
 		for( int a = 2; a < string.length; a++)
 		{			
 			int intChar = this.posicaoDoChar(string[a]);
-			if( nodo.nodos[intChar] == null)
+			if( nodo.nodos[ intChar ] == null )
 			{
 				
-				nodo.nodos[intChar] = new Nodo();
+				nodo.nodos[ intChar ] = new Nodo();
 				
 				/*
 				 * Complicado...Mas vamos tentar
@@ -141,25 +142,23 @@ public class ArvoreTrie
 				 * 	SE o nodos que criamos no nodo tal é nulo é pq ele não alocou
 				 * 	nenhum dos seus nodos internos, logo faltou memória
 				 */
-				if( nodo.nodos[intChar].nodos == null)
+				if( nodo.nodos[ intChar ].nodos == null )
 				{
 					//if( this.isDebug)
 						//showDebug("Nodo não criado volta false\n");
-                                        System.out.printf("FALTOU MEMORIA");
-                                        System.exit(1);
 					return false;
 				}
-				nodo.nodos[intChar].prev = nodo;
+				nodo.nodos[ intChar ].prev = nodo;
 				//if( this.isDebug)
 					//showDebug(String.format("Inserido nodo %d\n", intChar));
 			}
-			nodo.nodos[intChar].numeroDePrefixo++;
-			nodo = nodo.nodos[intChar];
+			nodo.nodos[ intChar ].numeroDePrefixo++;
+			nodo = nodo.nodos[ intChar ];
 		}
 		//if( this.isDebug)
 			//showDebug("\n");
 		nodo.isFinal = true;
-		return true;
+		return nodo.isFinal;
 	}
 	
 	/**
@@ -182,11 +181,11 @@ public class ArvoreTrie
 		int a;
 		for( a = 2; a < string.length; a++)
 		{
-			if( nodo.nodos[this.posicaoDoChar(string[a])] != null)
+			if( nodo.nodos[ this.posicaoDoChar( string[a] ) ] != null )
 			{
 				//if( this.isDebug)
 					//showDebug(String.format("buscou para remover posicao %d\n", this.posicaoDoChar(string[a])));
-				nodo = nodo.nodos[this.posicaoDoChar(string[a])];
+				nodo = nodo.nodos[ this.posicaoDoChar( string[a] ) ];
 			}
 			else
 			{
@@ -223,6 +222,10 @@ public class ArvoreTrie
 				nodo = nodo.prev;
 			}
 		}
+                /**
+                 * Se o nodo é igual a raiz, então houve sucesso
+                 *  no retornar
+                 */
 		if( nodo.equals(raiz))
 		{
 			return true;
@@ -249,16 +252,16 @@ public class ArvoreTrie
 		
 		for( int a = 2; a < string.length; a++)
 		{
-			if( nodo.nodos[this.posicaoDoChar(string[a])] != null)
+			if( nodo.nodos[ this.posicaoDoChar( string[a] ) ] != null)
 			{
 				//if( this.isDebug)
 					//showDebug(String.format("buscou posicao %d\n", this.posicaoDoChar(string[a])));
-				nodo = nodo.nodos[this.posicaoDoChar(string[a])];
+				nodo = nodo.nodos[ this.posicaoDoChar( string[a] ) ];
 			}
 			else
 			{
-				if( this.isDebug)
-					showDebug("não achou\n");
+				//if( this.isDebug )
+					//showDebug("não achou\n");
 				return false;
 			}
 		}
