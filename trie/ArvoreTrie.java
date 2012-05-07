@@ -1,8 +1,8 @@
 /**
- * Classe do objeto arvore trie
- * 	Nodo raiz                     - O nodo pai de todos
- * 	LeitorDeArquivo lerArquivo    - Faz a leitura do arquivo entrada.txt com os comandos em forma de strings
+ * Classe do objeto àrvore trie
+ *  Nodo raiz                     - O nodo pai de todos
  *  boolean isDebug               - Usado para fazer uma debugging da execução do código
+ * 
  *  @author glaucomunsberg@gmail.com
  */
 
