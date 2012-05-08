@@ -81,6 +81,7 @@ Versão 0.9
                         Agora gera palavras de tamanho fixo
 		ArvoreDeSufixo
 			Implementação a partir de um fork do arquivo 'ArvoreTrie'
+			Inserção usando uma trie
 	Implementação
 		Versões
 			Substitui a função do arquivo REAME, para que o antigo arquivo dê espaço a uma dissertação sobre o funciomanto do programa
@@ -89,3 +90,4 @@ Houston, we have a problem?
 	Yes, programa apesar de geral resultado correto, tem um limite de execução que faz com que não 
 	dê falha de alocação de memória, porém o programa aparentemento não executa a próxima instrução
 	e mantém a execução. Contudo o processo é morto pelo OS, mais detalhes leia no arquivo README 4.1.4
+	Yes, a maior palindroma parece não ser a maior de fato :S
