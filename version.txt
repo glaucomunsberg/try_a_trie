@@ -85,9 +85,18 @@ Versão 0.9
 	Implementação
 		Versões
 			Substitui a função do arquivo REAME, para que o antigo arquivo dê espaço a uma dissertação sobre o funciomanto do programa
-
+Versão 0.9.5
+        Correção
+               ArvoreDeSufixo
+                        Agora é extends de ArvoreTrie
+                GeradorDeString
+                        Strings de DNA segundo a especificação do trabalho
+       Implementação
+              ArvoreDeSufixo
+                        Implementado métodos expecíficos
+                        
 Houston, we have a problem?
 	Yes, programa apesar de geral resultado correto, tem um limite de execução que faz com que não 
 	dê falha de alocação de memória, porém o programa aparentemento não executa a próxima instrução
 	e mantém a execução. Contudo o processo é morto pelo OS, mais detalhes leia no arquivo README 4.1.4
-	Yes, a maior palindroma parece não ser a maior de fato :S
+	Yes, nodo com 26 em vez de 4

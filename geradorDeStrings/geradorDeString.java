@@ -72,7 +72,8 @@ public class geradorDeString
 	 */
 	public void finalizarProcesso()
 	{
-                entrada.adicionar("@\n");
+                if(this.tipoDeString == 1)
+                    entrada.adicionar("@\n");
 		entrada.fechar();
 		saida.fechar();
 		JOptionPane.showMessageDialog(null, String.format("Foram gerado os arquivos entrada.txt e saida_desejada.txt\n Total de palavras geradas: %d\nPalavras ao final da execução: %d",this.numeroDePalavras, this.listDePalavras.size()),"Aleatoriedade não tão aleatória assim", JOptionPane.PLAIN_MESSAGE);
@@ -159,8 +160,8 @@ public class geradorDeString
 		 *  Soma o comando mais a palavra gerada
 		 */
 		listDePalavras.add( String.format("%s%s\n", acao,stringTemp.toString()) );
-        gravarNoArquivoDeEntradas(String.format("%s%s\n", acao,stringTemp.toString()));
-        geradorDeResultado(acao, stringTemp.toString());
+                gravarNoArquivoDeEntradas(String.format("%s%s\n", acao,stringTemp.toString()));
+                geradorDeResultado(acao, stringTemp.toString());
 	}
 	
 	/**
@@ -218,9 +219,7 @@ public class geradorDeString
 		/**
 		 *  Soma o comando mais a palavra gerada
 		 */
-		listDePalavras.add( String.format("%s%s\n", acao,stringTemp.toString()) );
-        gravarNoArquivoDeEntradas(String.format("%s%s\n", acao,stringTemp.toString()));
-        geradorDeResultado(acao, stringTemp.toString());
+            gravarNoArquivoDeEntradas(String.format("%s\n", stringTemp.toString()));
 		
 	}
 
@@ -253,7 +252,7 @@ public class geradorDeString
 
 	/**
 	 *  Recebe uma string que é composta pela acao seguida por
-	 *  uma palavra que será gravada no arquivo entrada.txt
+	 *  uma palavra queacao, será gravada no arquivo entrada.txt
 	 *  @param String linha{"acao"+" "+"palavra"}
 	 */
 	private void gravarNoArquivoDeEntradas(String linha)

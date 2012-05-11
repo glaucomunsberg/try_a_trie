@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ArvoreTrie 
 {  
         private char palavraChar[];
-	private Nodo raiz;
+	protected Nodo raiz;
 	public boolean isDebug;
         protected Scanner leitor;
         
