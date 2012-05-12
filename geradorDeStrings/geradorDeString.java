@@ -5,11 +5,12 @@
  * 	em cada linha que serão usados pelo programa de árvore B;
  * 	"saida.txt" contém apenas V ou F, de acordo com o que
  * 	se espera de saida do programa segundo aquela palavra
- * 	no programa da árvore B
- * @author glaucomunsberg@gmail.com
- *
+ * 	no programa da árvoreTrie
+ * Para maiores informações:
+ * @autor   Glauco Roberto Munsberg dos Santos
+ * @github  git@github.com:glaucomunsberg/try_a_trie.git
+ * @version 0.9.9
  */
-
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -198,16 +199,16 @@ public class geradorDeString
 			switch(valor)
 			{
 				case 0:
-					stringTemp.append("t");
+					stringTemp.append("T");
 					break;
 				case 1:
-					stringTemp.append("g");
+					stringTemp.append("G");
 					break;
 				case 2:
-					stringTemp.append("c");
+					stringTemp.append("C");
 					break;
 				case 3:
-					stringTemp.append("a");
+					stringTemp.append("A");
 					break;
 				default:
 					stringTemp.append("?");

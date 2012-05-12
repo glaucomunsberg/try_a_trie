@@ -4,13 +4,13 @@
 #
 # 1.Introduçao
 # 2.Como foi programado
-# 3.Como executar execução
+# 3.Como executar
 # 4.Resultados obtidos
 # 5.Conclusão
 #
 # @autor   Glauco Roberto Munsberg dos Santos
 # @github  git@github.com:glaucomunsberg/try_a_trie.git
-# @version 0.9.6
+# @version 0.9.9
 #
 ##########################################################################
 # 1.Introduçao
@@ -18,14 +18,13 @@
 #
 #   O projeto Try_a_trie é o resultado do trabalho proposto pelo Professor
 #   Ricardo Araújo na disciplina de EDII. A especificação do trabalho se
-#   encontra dividido em tuas parte. Um de criação de uma árvore Trie: URL
+#   encontra dividido em duas partes. 1º a criação de uma árvore Trie: URL
 #   http://avainstitucional.ufpel.edu.br/mod/assignment/view.php?id=10135
-#   e a segunda parte do trabalho, referente a procura da maior palindroma
+#   e a 2º parte do trabalho, referente a procura da maior palindroma
 #   encotra-se na URL: 
 #   http://avainstitucional.ufpel.edu.br/mod/assignment/view.php?id=30353
 #   
-#   
-#   O trabalho foi versionado no GitHub como apoio a programação, para
+#   O trabalho foi versionado no GitHub como apoio a programação, para o
 #   maior detalhamento das versões consulte o arquivo "version.txt". O
 #   trabalho foi programado e testado em um computador:
 #    * Pentium Dual Core 2.2GHz
@@ -33,8 +32,8 @@
 #    * Ubuntu 12.04 32-bits, área de troca de 1Gb para auxílio, com Java7
 #      e demais configurações padrões.
 #
-# 1.1 Melhor resultado obtido
-#   Usando uma JMV de no máximo 2,3Gb o melhor resultado obtido foi:
+# 1.1 Resultado Final
+#   Usando uma JMV de no máximo 2,3Gb os melhores resultados* obtidos foram:
 #
 # 1.1.1 Para Àrvore Trie
 #   *Palavras de tamanho fixo
@@ -48,8 +47,10 @@
 #     Tempo de execução : 46,2s
 #
 # 1.1.2 Para Árvore de Sufixo
-#     Numero de caract.: 10mil
-#     Tempo de execução: 44,7s
+#     Numero de caract.: 5mil
+#     Tempo de execução: 57,7s
+#
+#   *Sem estouro de memória e inferior a 60segundos
 #
 ##########################################################################
 # 2.Como foi programado
@@ -57,9 +58,13 @@
 #
 #   A programação do projeto Try_a_trie foi realiza por Glauco Roberto
 #   Munsberg dos Santos tendo sido desenvolvido de 15 de Abril de 2012 a 
-#   8 de junho de 2012 com a linguagem Java, utilizada pelo mesmo para
+#   12 de maio de 2012 com a linguagem Java, utilizada pelo mesmo para
 #   que o conhecimento obtido através da cadeira Programação Orientada à
-#   Objeto (POO) pode-se ser aplicada de forma mais robusta.
+#   Objeto (POO) podesse ser aplicada de forma mais robusta. A documentação
+#   do código está dividida em duas parte: A primeira que se refere o
+#   comportamente do programa se encontra neste arquivo, a segunda se
+#   encontra diretamente nos arquivos .java referente como é executado
+#   as ações.
 #
 ##########################################################################
 # 3.Como executar
@@ -69,29 +74,70 @@
 #   a execução. Podendo inclusive baixar e executar o arquivo 
 #   'geradorDeString', entretanto aqui está disponível apenas as duas
 #   arvores pelos arquivos:
-#   *arvoreTrie
-#   *arvoreDeSufixo
+#   *arvoreTrie.java
+#   *arvoreDeSufixo.java
+#   *nodo.java
 #
-# 3.1 Execução da Árvore Trie
+# 3.1 Compilação das árvores
+#   Para a compilação se obta por executar diretamente a compilação
+#   da árvore de sufixo que compila a trie e o nodo,pois são dependências,
+#   para compilar no terminal:
+#
+#   $ javac ArvoreDeSufixo.java
+#
+# 3.2 Execução das árvores
+#  3.2.1 Execução da Árvore Trie
 #   Para executar a árvore trie no terminal basta digitar:
 #
-#   $ java -Xms500m -Xmx2000m ArvoreTrie
+#   $ java -Xms500m -Xmx2300m ArvoreTrie
 #
-# 3.2 Execução da Árvorede Sufixo
+#  3.2.2 Execução da Árvorede Sufixo
 #   Para executar a árvore de sufixo no terminal basta digitar:
 #
-#   $ java -Xms500m -Xmx2000m ArvoreDeSufixo
+#   $ java -Xms500m -Xmx2300m ArvoreDeSufixo
 #
 #   Obs.: Os parametros -Xms e -Xmx da JVM reserva 500Mb no mínimo e no 
-#   máximo 2Gb alocada de Memória RAM para executar o processo, estando
+#   máximo 2,3Gb alocada de Memória RAM para executar o processo, estando
 #   o máximo limitado pela memória do computador onde está sendo executado
+#
+# 3.3 Comandos aceitos
+#  3.3.1 Comando da ÁrvoreTrie
+#   Para a trie são aceitos os comandos de operação
+#   *Operadores
+#    i - Inserção
+#    b - busca
+#    r - remoção
+#    @ - finaliza execução
+#
+#   Para inserir uma palavra então deve-se inserir como abaixo:
+#
+#   i asbaijsaisamaijaijssji
+#   
+#   Abstração:
+#   [operador palavra[a-z]]
+#   Para a arvore de sufixo aceita-se apenas um operador:
+#
+#  3.3.2 Comando da Sufixo
+#   Para a árvore de Sufixo é aceito o comando de operação
+#   *Operador
+#    @ - finaliza a execuçã
+#
+#   Para se procurar a maior palíndroma de uma palavra então deve-se 
+#   inserir como abaixo:
+#
+#   acgagactttacgtaca
+#
+#   Abstração:
+#   palavra[a,c,t,g,A,C,T,G]
+#
 ##########################################################################
 # 4.Resultados obtidos
 ##########################################################################
 #
 #   Abaixo temos alguns dos resultados obtidos pelas simulações, todos
-#   foram realizados a partir da versão 0.9.1 onde não se dectou mais
-#   problemas de lógica na inserção, remoção e busca com arquivos médianos
+#   foram realizados a partir da versão 0.9.1 na Trie e 0.9.6 da sufixo
+#   onde não se dectou mais problemas de lógica na inserção, remoção e 
+#   busca com arquivos médianos.
 #
 # 4.1 Simulações com a árvore trie
 #   4.1.1 Simulação 1
@@ -149,8 +195,8 @@
 #     Finalizou execu  : Não
 #
 # 4.2 Simulações com a árvore de sufixo
-#   As simulações realizadas com árvore de sufixo foram realizados na
-#   mesma máquina a partir da versão 0.9.6, usando palavra aleatória e 
+#   As simulações realizadas com árvore de sufixo foram na mesma máquina a
+#   partir da versão 0.9.6, usando palavra aleatória e 
 #   abaixo os resultados mais relevantes:
 #   4.2.1 Simulação 1
 #   Primeira execução utilizou 150Mb de memória
@@ -161,29 +207,37 @@
 #     Finalizou execu  : sim
 #   4.2.2 Simulação 2
 #   Após fazer algumas modificações de desempenho (0.9.7) o código teve uma
-#   melhor desempenho com supressão de comparações e etc. Para 10mil 
+#   melhor desempenho com supressão de comparações e etc. Para 5mil 
 #   obteve-se o resultado abaixo:
 #   Dados:
-#     Numero de caract.: 10mil
-#     Tempo de execução: 44,7s
-#     Nº de maiores    : 1
+#     Numero de caract.: 5mil
+#     Tempo de execução: 57,6s
+#     Nº de maiores    : 2
 #     Finalizou execu  : sim
+#   4.2.3
+#   A partir de 6 mil se tornou custoso. Porém obteve-se o resultado abaixo:
+#   Dados:
+#     Numero de caract.: 6mil
+#     Tempo de execução: 2m10,2s
+#     Nº de maiores    : 2
+#     Finalizou execu  : sim
+#
 ##########################################################################
 # 5.Conclusão
 ##########################################################################
 #
 #   Através da programação da árvore trie e de sufixo pode se obter alguns
 #   conhecimentos da própria linguagem e de como a JVM lida com a memória.
-#   Entretando ao comparar a execução em java como a linguagem C ou C++
+#   Entretando ao comparar a execução de java como a linguagem C ou C++
 #   verifica-se que não é a mais adequada tendo em vista que Java não prima
 #   pela eficiencia, porém permiti que muitos erros tenha sido evitado
-#   devido a utilização de referência e não uso pondeiros de memória.
+#   devido a utilização de referência e não uso de pondeiros de memória.
 #   Sendo assim cada nodo da trie ocupou um espaço maior do que se teria
-#   nas tuas liguagens citas acima, o que fez a execução da árvore 
-#   implementada com java ocupar mais espaço e tornar a execução menos
-#   custosa.
+#   nas tuas liguagens citas acima, por exemplo, o que fez a execução 
+#   da árvore implementada com Java ocupar um maior espaço e tornar a 
+#   execução custosa.
 #
-# 5.1 Sobre erros na Trie
+# 5.1 Sobre o comportamento da Trie
 #   Como foi apontado na simulação 5 (4.1.5) quando há falta de memória por
 #   parte da JVM o comportamento do programa se torna instável, em algumas
 #   pesquisas em diversas bibliografias fui alertado que este comportamento 
@@ -191,9 +245,15 @@
 #   procura de nodos que não serão referenciado mais para serem desalocados
 #   da memória para a continuação da execução até que é morto pelo sistema.
 #   Entretando como ocorreu na simulação 4.1.5 até o ponto onde foi
-#   executado, ou seja inserção da palavra 2411 o resultado obtido foi
-#   exatamente o esperado batendo todos os resultados até então executados.
-# 5.2 Sobre erros na Sufixo
-#   Não observado nenhum problema
+#   executado, ou seja, inserção da palavra 2411 o resultado obtido foi
+#   exatamente o esperado. Para controlar esse comportamento, há então o
+#   tratamento da excessão, que fatalmente aborta a execução na maioria dos
+#   casos reparado quando não há memória.
+#
+# 5.2 Sobre comportamento da Sufixo
+#   Por ser extensão da trie, herda o mesmo comportamento da trie em
+#   relação ao comportamento de gasto e gerencimanto de memória. Entrentando
+#   não se pode verificar resultados parciais como na árvore trie quando há
+#   o estouro de memória.
 #
 ##########################################################################

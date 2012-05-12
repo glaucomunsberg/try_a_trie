@@ -1,9 +1,8 @@
 /**
- * Classe do objeto àrvore trie
- *  Nodo raiz                     - O nodo pai de todos
- *  boolean isDebug               - Usado para fazer uma debugging da execução do código
- * 
- *  @author glaucomunsberg@gmail.com
+ * Para maiores informações:
+ * @autor   Glauco Roberto Munsberg dos Santos
+ * @github  git@github.com:glaucomunsberg/try_a_trie.git
+ * @version 0.9.9
  */
 
 import java.util.Scanner;
@@ -128,22 +127,28 @@ public class ArvoreTrie
 		{			
 			int intChar = this.posicaoDoChar(string[a]);
 			if( nodo.nodos[ intChar ] == null )
-			{
-				
-				nodo.nodos[ intChar ] = new Nodo(numDeNodos);
-				
-				/*
-				 * Complicado...Mas vamos tentar
-				 * 	o nodo tem seus nodos vazios e acima diz que um dos nodos do nodo
-				 * 	agora deve ser instanciado. Abaixo então o que fizemos:
-				 * 	SE o nodos que criamos no nodo tal é nulo é pq ele não alocou
-				 * 	nenhum dos seus nodos internos, logo faltou memória
-				 */
-				if( nodo.nodos[ intChar ].nodos == null )
-				{
-					return false;
-				}
-				nodo.nodos[ intChar ].prev = nodo;
+			{	
+                            try
+                            {
+                                nodo.nodos[ intChar ] = new Nodo(numDeNodos);
+                            }
+                            catch(Exception erro)
+                            {
+                                System.gc();
+                                System.runFinalization();
+                            }
+
+                           /*
+                            * 	O nodo tem seus nodos vazios e acima diz que um dos nodos do nodo
+                            * 	agora deve ser instanciado. Abaixo então o que fizemos:
+                            * 	SE o nodos que criamos no nodo tal é nulo é pq ele não alocou
+                            * 	nenhum dos seus nodos internos, logo faltou memória
+                            */
+                            if( nodo.nodos[ intChar ].nodos == null )
+                            {
+                                    return false;
+                            }
+                            nodo.nodos[ intChar ].prev = nodo;
 			}
 			nodo.nodos[ intChar ].numeroDePrefixo++;
 			nodo = nodo.nodos[ intChar ];

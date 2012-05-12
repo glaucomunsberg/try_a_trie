@@ -36,7 +36,7 @@ Versão 0.4
 			
 Versão 0.5
 	Correção
-		Inserido comentários para auxíliar a leitura do código
+		Inserido comentários para auxiliar a leitura do código
 		Remoção de qualquer alerta nas classes
 	Implementação
 		ArvoreTrie
@@ -71,7 +71,7 @@ Versão 0.8
                         Correção para agora adicionar ao final do arquivo o "@" como caracter de finalização da execução
         Implementação
                 Nodo
-                        Removendo resquísios antes do Garbage Collector passar
+                        Removendo resquícios antes do Garbage Collector passar
 Versão 0.9
         Correção
                 ArvoreTrie
@@ -106,9 +106,11 @@ Versão 0.9.7
 			Melhora da legibilidade do código, remoção de codigos de debug
 	      ArvoreDeSufixo
 			Comparações desnecessárias foram supressadas e melhora de desempenho -60% do tempo
+Versão 0.9.9
+	Correções
+	     ArvoreDeSufixo
+			Correções variadas de desempenho
+	     Testes de desempenho a árvore de sufixo e arvore trie
 
 Houston, we have a problem?
-	Yes, programa apesar de geral resultado correto, tem um limite de execução que faz com que não 
-	dê falha de alocação de memória, porém o programa aparentemento não executa a próxima instrução
-	e mantém a execução. Contudo o processo é morto pelo OS, mais detalhes leia no arquivo README 4.1.4
-	Yes, nodo com 26 em vez de 4
+	Yes, leia no arquivo README 5.1

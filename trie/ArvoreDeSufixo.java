@@ -1,8 +1,10 @@
 /**
- * Classe do objeto àrvore de sufixo
- * 
- *  @author glaucomunsberg@gmail.com
+ * Para maiores informações:
+ * @autor   Glauco Roberto Munsberg dos Santos
+ * @github  git@github.com:glaucomunsberg/try_a_trie.git
+ * @version 0.9.9
  */
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -135,13 +137,13 @@ public class ArvoreDeSufixo extends ArvoreTrie
                         {
                             if( b-a == maiorTamanho)
                             {
-                                maioresPalavras.add(Arrays.toString(Arrays.copyOfRange( palavraCharInvertida, a,b )));  
+                                maioresPalavras.add( String.valueOf(Arrays.copyOfRange(palavraCharInvertida, a, b) ) ); 
                             }
                             else
                             {
                                 maioresPalavras.clear();
                                 maiorTamanho = b-a;
-                                maioresPalavras.add(Arrays.toString(Arrays.copyOfRange( palavraCharInvertida, a,b )));
+                                maioresPalavras.add(String.valueOf(Arrays.copyOfRange(palavraCharInvertida, a, b) ));
                             }
                         }
                     }
@@ -153,20 +155,37 @@ public class ArvoreDeSufixo extends ArvoreTrie
             }
           
         }
+        raiz = null;
+        
+        System.gc();
+        System.runFinalization();
+        
+        String[] args = new String[maioresPalavras.size()];
+        int n=0;
         while(!maioresPalavras.isEmpty())
         {
-            String palavraPraTratar = maioresPalavras.remove(0);
-            StringBuilder palavraFinal = new StringBuilder();
-            for(int a=0; a <palavraPraTratar.length();a++ )
-            {
-                if(palavraPraTratar.charAt(a) != ' ' && palavraPraTratar.charAt(a) != ',' && palavraPraTratar.charAt(a) != '[' && palavraPraTratar.charAt(a) != ']')
-                    palavraFinal.append(palavraPraTratar.charAt(a));
-            }
-            System.out.printf("%s\n",palavraFinal.toString());
+            args[n] = maioresPalavras.remove().toString();
+            n++;
         }
+        maioresPalavras.clear();
+        imprimeOrdenado(args);
         return true;
     }
     
+    /**
+     * Método que utiliza o Array Sort para imprimir
+     *  de modo ordenado os valores do vetor
+     * @param palindromas 
+     */
+    public void imprimeOrdenado(String[] palindromas)
+    {
+        Arrays.sort(palindromas);
+        for(int i=0; i<palindromas.length; i++) {  
+            System.out.println( palindromas[i] );  
+        }
+    }
+    
+
     @Override
     /**
      * Método que sobre escreve o método usado na árvore
@@ -180,12 +199,16 @@ public class ArvoreDeSufixo extends ArvoreTrie
         switch(letra)
         {
             case 'a':
+            case 'A':
                 return 0;
             case 't':
+            case 'T':
                 return 1;
             case 'g':
+            case 'G':
                 return 2;
             case 'c':
+            case 'C':
                 return 3;
             default:
                 return 0;

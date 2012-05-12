@@ -1,9 +1,9 @@
 /**
- * Classe que gera um arquivo segundo o nome passado a ele
- *	Formatter saida - Manipula as saidas e as coloca no arquivo
- *	@author glaucomunsberg@gmail.com
+ * Para maiores informações:
+ * @autor   Glauco Roberto Munsberg dos Santos
+ * @github  git@github.com:glaucomunsberg/try_a_trie.git
+ * @version 0.9.9
  */
-
 import java.io.FileNotFoundException;
 import java.util.Formatter;
 import java.util.FormatterClosedException;
