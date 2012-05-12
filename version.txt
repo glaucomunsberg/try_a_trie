@@ -94,7 +94,19 @@ Versão 0.9.5
        Implementação
               ArvoreDeSufixo
                         Implementado métodos expecíficos
-                        
+Versão 0.9.6
+       Implementação
+	      ArvoreDeSufixo
+                        Documentação
+Versão 0.9.7
+	Correção
+	      Nodo
+			De Desemenho, nodo agora tem tamanho definido pela árvore que o constrói
+	      ArvoreTrie
+			Melhora da legibilidade do código, remoção de codigos de debug
+	      ArvoreDeSufixo
+			Comparações desnecessárias foram supressadas e melhora de desempenho -60% do tempo
+
 Houston, we have a problem?
 	Yes, programa apesar de geral resultado correto, tem um limite de execução que faz com que não 
 	dê falha de alocação de memória, porém o programa aparentemento não executa a próxima instrução

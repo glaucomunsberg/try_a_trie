@@ -10,7 +10,7 @@
 #
 # @autor   Glauco Roberto Munsberg dos Santos
 # @github  git@github.com:glaucomunsberg/try_a_trie.git
-# @version 0.9.2
+# @version 0.9.6
 #
 ##########################################################################
 # 1.Introduçao
@@ -34,8 +34,9 @@
 #      e demais configurações padrões.
 #
 # 1.1 Melhor resultado obtido
-#   Usando uma JMV de no máximo 2,3Gb o melhor resultado obtido:
-# 1.1.1 Para árvore trie
+#   Usando uma JMV de no máximo 2,3Gb o melhor resultado obtido foi:
+#
+# 1.1.1 Para Àrvore Trie
 #   *Palavras de tamanho fixo
 #     Numero de Palavras: 10mil
 #     Tamanho da Palavra: até 5mil e 500
@@ -45,16 +46,11 @@
 #     Numero de Palavras: 10mil
 #     Tamanho da Palavra: 3mil
 #     Tempo de execução : 46,2s
-# 1.1.2 Para árvore de Sufixo
-#   *Palavras de tamanho fixo
-#     Numero de Palavras: 10mil
-#     Tamanho da Palavra: até 5mil e 500
-#     Tempo de execução : 36,3s
 #
-#   *Palavras de tamanho variado
-#     Numero de Palavras: 
-#     Tamanho da Palavra:
-#     Tempo de execução :
+# 1.1.2 Para Árvore de Sufixo
+#     Numero de caract.: 10mil
+#     Tempo de execução: 44,7s
+#
 ##########################################################################
 # 2.Como foi programado
 ##########################################################################
@@ -81,15 +77,14 @@
 #
 #   $ java -Xms500m -Xmx2000m ArvoreTrie
 #
-#   Obs.: Os parametros -Xms e -Xmx da JVM reserva 500Mb no mínimo e no 
-#   máximo 2Gb alocada de Memória RAM para executar o processo, estando
-#   o máximo limitado pela memória do computador onde está sendo executado
 # 3.2 Execução da Árvorede Sufixo
 #   Para executar a árvore de sufixo no terminal basta digitar:
 #
 #   $ java -Xms500m -Xmx2000m ArvoreDeSufixo
 #
-#
+#   Obs.: Os parametros -Xms e -Xmx da JVM reserva 500Mb no mínimo e no 
+#   máximo 2Gb alocada de Memória RAM para executar o processo, estando
+#   o máximo limitado pela memória do computador onde está sendo executado
 ##########################################################################
 # 4.Resultados obtidos
 ##########################################################################
@@ -99,7 +94,7 @@
 #   problemas de lógica na inserção, remoção e busca com arquivos médianos
 #
 # 4.1 Simulações com a árvore trie
-# 4.1.1 Simulação 1
+#   4.1.1 Simulação 1
 #   O programa rodou durante 0.3 segundos executando 1000 operações entre
 #   inserir, remover e buscar. Foi utilizado 1mil palavras de 1 até 100
 #   letras repeitando a aleatóriedade. Para isso foi utilizado uma MVJ
@@ -111,7 +106,7 @@
 #     Nº de pal. exec  : 1mil
 #     Tempo de execução: 0.3s
 #     Finalizou execu  : Sim
-# 4.1.2 Simulação 2
+#   4.1.2 Simulação 2
 #   Simulação inversa a 4.1.1 sendo 100 palavras de até 1000.
 #   Dados:
 #     Nº de Palavras   : 100
@@ -119,7 +114,7 @@
 #     Nº de pal. exec  : 100
 #     Tempo de execução: 0.3s
 #     Finalizou execu  : Sim
-# 4.1.3 Sumulação 3
+#   4.1.3 Simulação 3
 #   Simulação realizada com a mesma confi da 4.1.1 e 4.1.2, executando um
 #   teste de força com uma única palavra de 25mil caractéres inserida,
 #   buscada, removida, buscada, inserida, buscada e removida, nesta ordem,
@@ -130,7 +125,7 @@
 #     Nº de pal. exec  : 7
 #     Tempo de execução: 0.35s
 #     Finalizou execu  : Sim
-# 4.1.4
+#   4.1.4 Simulação 3
 #   Simulação realizada com 2Gb máximo de memória para 10mil palavras
 #   aletórias de tamanho fixo de 5Mil deve tempo de execução igual a 32,3s
 #   com um pico de uso de memória igual a 2,3Gb
@@ -140,7 +135,7 @@
 #    Nº de pal.exec    : 10mil
 #    Tempo de execução : 32,3s
 #    Finalizou execu   : Sim
-# 4.1.5 Simulação 5
+#   4.1.5 Simulação 5
 #   O programa rodou durante 190 minutos executando 2411 operações entre
 #   inserir, remover e buscar. Foi utilizado 10mil palavras de 1 até 10000
 #   letras respeitando a aleatóriedade. Para isso foi utilizado uma MVJ
@@ -154,9 +149,25 @@
 #     Finalizou execu  : Não
 #
 # 4.2 Simulações com a árvore de sufixo
-#   As simulações realizadas com árvore de sufixo foram realizadas com o
-#   mesmo padrão da árevore trie por derivar dela.
-#
+#   As simulações realizadas com árvore de sufixo foram realizados na
+#   mesma máquina a partir da versão 0.9.6, usando palavra aleatória e 
+#   abaixo os resultados mais relevantes:
+#   4.2.1 Simulação 1
+#   Primeira execução utilizou 150Mb de memória
+#   Dados:
+#     Numero de caract.: 1mil
+#     Tempo de execução: 2,2s
+#     Nº de maiores    : 1
+#     Finalizou execu  : sim
+#   4.2.2 Simulação 2
+#   Após fazer algumas modificações de desempenho (0.9.7) o código teve uma
+#   melhor desempenho com supressão de comparações e etc. Para 10mil 
+#   obteve-se o resultado abaixo:
+#   Dados:
+#     Numero de caract.: 10mil
+#     Tempo de execução: 44,7s
+#     Nº de maiores    : 1
+#     Finalizou execu  : sim
 ##########################################################################
 # 5.Conclusão
 ##########################################################################
@@ -172,7 +183,7 @@
 #   implementada com java ocupar mais espaço e tornar a execução menos
 #   custosa.
 #
-# 5.1 Sobre erros na execução
+# 5.1 Sobre erros na Trie
 #   Como foi apontado na simulação 5 (4.1.5) quando há falta de memória por
 #   parte da JVM o comportamento do programa se torna instável, em algumas
 #   pesquisas em diversas bibliografias fui alertado que este comportamento 
@@ -182,3 +193,7 @@
 #   Entretando como ocorreu na simulação 4.1.5 até o ponto onde foi
 #   executado, ou seja inserção da palavra 2411 o resultado obtido foi
 #   exatamente o esperado batendo todos os resultados até então executados.
+# 5.2 Sobre erros na Sufixo
+#   Não observado nenhum problema
+#
+##########################################################################

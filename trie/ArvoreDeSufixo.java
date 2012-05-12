@@ -13,11 +13,29 @@ public class ArvoreDeSufixo extends ArvoreTrie
     protected StringBuilder stringPalavra;
     protected char[] palavraChar,palavraCharInvertida ;
     
-    public ArvoreDeSufixo()
+    /**
+     * Construtor
+     */
+    public ArvoreDeSufixo(int numDeNodos)
     {
+        super(numDeNodos);
         leitor = new Scanner(System.in);
     }
     
+    /**
+     * Método main que executa
+     * @param args 
+     */
+    public static void main(String args[])
+    {
+        ArvoreDeSufixo arvSufixo = new ArvoreDeSufixo(4);
+        arvSufixo.iniciar();
+    }
+    
+    /**
+     * Método inicia sobre escreve o de ArvoreTrie
+     * pois se diferencia na sua execução
+     */
     @Override
     public void iniciar()
     {
@@ -32,35 +50,43 @@ public class ArvoreDeSufixo extends ArvoreTrie
         }
         else
         {
-            boolean retornoRaiz1 = false;
             for(int a=0; a < palavraChar.length; a++)
             {
-                retornoRaiz1 = inserirString( Arrays.copyOfRange(palavraChar, a, palavraChar.length));
-                System.out.printf("%s\n", Arrays.toString( Arrays.copyOfRange( palavraChar, a, palavraChar.length ) ) );
-            }
-            if(!retornoRaiz1)
-            {
-                System.out.printf("erro de inserção\n");
+                inserirString( Arrays.copyOfRange(palavraChar, a, palavraChar.length));
             }
         } 
         stringPalavra.delete(0, stringPalavra.length());
         buscaPalindromas();
     }
     
+    /**
+     * Método inserirString sobre escreve o da ArvoreTrie
+     * pois cada nodo é uma substring, ou seja, a diferença
+     * está em que todos são finais
+     * @param char[] string
+     * @return boolean { true - se inseriu corretamente | false - se não inseriu }
+     */
     @Override
     protected boolean inserirString(char[] string)
 	{
 		Nodo nodo = raiz;
 		nodo.numeroDePrefixo++;	//Diz que ali tem mais um nodo
-		//if( this.isDebug)
-			//showDebug(String.format("Inserindo: %s\n", Arrays.toString(string)) );
 		for( int a = 2; a < string.length; a++)
 		{			
 			int intChar = this.posicaoDoChar(string[a]);
 			if( nodo.nodos[ intChar ] == null )
 			{
 				
-				nodo.nodos[ intChar ] = new Nodo();
+                            try
+                            {
+                                nodo.nodos[ intChar ] = new Nodo(numDeNodos);
+                            }
+                            catch(Exception erro)
+                            {
+                                System.gc();
+                                System.runFinalization();
+                            }
+				
 				
 				/*
 				 * Complicado...Mas vamos tentar
@@ -71,75 +97,109 @@ public class ArvoreDeSufixo extends ArvoreTrie
 				 */
 				if( nodo.nodos[ intChar ].nodos == null )
 				{
-					//if( this.isDebug)
-						//showDebug("Nodo não criado volta false\n");
 					return false;
 				}
                                 nodo.isFinal = true;
 				nodo.nodos[ intChar ].prev = nodo;
-				//if( this.isDebug)
-					//showDebug(String.format("Inserido nodo %d\n", intChar));
 			}
 			nodo.nodos[ intChar ].numeroDePrefixo++;
 			nodo = nodo.nodos[ intChar ];
 		}
-		//if( this.isDebug)
-			//showDebug("\n");
 		nodo.isFinal = true;
 		return nodo.isFinal;
 	}
     
+    /**
+     * 
+     * @return 
+     */
     public boolean buscaPalindromas()
     {
         boolean achou = false;
         int maiorTamanho = 0;
         
-        //int b =0;
-        LinkedList<String> listaDeMaiores = new LinkedList<String>();
-        System.out.printf("tamnho: %s\n",palavraCharInvertida.length);
+        LinkedList<String> maioresPalavras = new LinkedList<> ();
+        
         for(int a = 0; a <= palavraCharInvertida.length ; a++ )
         {
             for(int b = a; b <= palavraCharInvertida.length; b++)
             {
-                System.out.printf("%s\n", Arrays.toString( Arrays.copyOfRange( palavraCharInvertida, a, b ) ) );
+
                 achou = buscarString( Arrays.copyOfRange(palavraCharInvertida, a, b) );       
                 if( achou )
                 {
-                    System.out.printf("%s -  achou \n", Arrays.toString( Arrays.copyOfRange( palavraCharInvertida, a, b ) ) );
                     if( isPalindroma( Arrays.copyOfRange( palavraCharInvertida, a,b ) ) )
                     {
-                        System.out.printf("%s -  achou - Palindroma \n", Arrays.toString( Arrays.copyOfRange( palavraCharInvertida, a, b ) ) );
+ 
                         if( b-a >= maiorTamanho)
                         {
                             if( b-a == maiorTamanho)
                             {
-                                System.out.printf("%s -  achou - Palindroma - do mesmo tamanho\n", Arrays.toString( Arrays.copyOfRange( palavraCharInvertida, a, b ) ) );
-                                listaDeMaiores.add(Arrays.copyOfRange( palavraCharInvertida, a,b ).toString());
+                                maioresPalavras.add(Arrays.toString(Arrays.copyOfRange( palavraCharInvertida, a,b )));  
                             }
                             else
                             {
-                                System.out.printf("%s -  achou - Palindroma - maior\n", Arrays.toString( Arrays.copyOfRange( palavraCharInvertida, a, b ) ) );
-                                listaDeMaiores.clear();
+                                maioresPalavras.clear();
                                 maiorTamanho = b-a;
-                                listaDeMaiores.add(Arrays.toString(Arrays.copyOfRange( palavraCharInvertida, a,b)));
+                                maioresPalavras.add(Arrays.toString(Arrays.copyOfRange( palavraCharInvertida, a,b )));
                             }
                         }
                     }
                 }
+                else
+                {
+                    break;
+                }
             }
           
         }
-        while(!listaDeMaiores.isEmpty())
+        while(!maioresPalavras.isEmpty())
         {
-            String lista = listaDeMaiores.remove();
-            System.out.printf("%s",lista );
+            String palavraPraTratar = maioresPalavras.remove(0);
+            StringBuilder palavraFinal = new StringBuilder();
+            for(int a=0; a <palavraPraTratar.length();a++ )
+            {
+                if(palavraPraTratar.charAt(a) != ' ' && palavraPraTratar.charAt(a) != ',' && palavraPraTratar.charAt(a) != '[' && palavraPraTratar.charAt(a) != ']')
+                    palavraFinal.append(palavraPraTratar.charAt(a));
+            }
+            System.out.printf("%s\n",palavraFinal.toString());
         }
         return true;
     }
     
+    @Override
+    /**
+     * Método que sobre escreve o método usado na árvore
+     *  trie para que seja capaz de suportar numero menor
+     *  de nodos, sendo assim mapeia os sufixos 'a','t','g'
+     *  e 'c' e numerais de 0 a 3
+     * @return int {0 a 3}
+     */
+    public int posicaoDoChar(char letra)
+    {
+        switch(letra)
+        {
+            case 'a':
+                return 0;
+            case 't':
+                return 1;
+            case 'g':
+                return 2;
+            case 'c':
+                return 3;
+            default:
+                return 0;
+        }
+    }
+    
+    /**
+     * Método responsável por retornar se é ou não palíndromo
+     * @param char[] palavra
+     * @return boolean { true - se é palindromo | false - se não for palindromo}
+     */
     public boolean isPalindroma(char[] palavra)
     {  
-      if(palavra.length ==2)
+      if(palavra.length == 2)
             return palavra[0] == palavra[1];
       int i = 0;
       int j = palavra.length - 1;
@@ -155,17 +215,16 @@ public class ArvoreDeSufixo extends ArvoreTrie
       return true;
     }
     
-    public static void main(String args[])
-    {
-        ArvoreDeSufixo arvSufixo = new ArvoreDeSufixo();
-        arvSufixo.iniciar();
-    }
-    
+    /**
+     * Método que sobre escreve o método da ArvoreTrie
+     * Para que possa finalizála corretamente
+     */
     @Override
     public void finalizar()
     {
         super.finalizar();
         System.gc();
+        System.runFinalization();
         System.exit(0);
     }
     

@@ -13,14 +13,14 @@ public class Nodo {
 	protected int numeroDePrefixo;
 	protected Nodo prev;
 	
-	public Nodo()
+	public Nodo(int numDeNodos)
 	{
 		isFinal = false;
-		nodos = new Nodo[26];
+		nodos = new Nodo[numDeNodos];
 		numeroDePrefixo = 0;
 		prev = null;
-	}
-        
+	}   
+        @Override
 	protected void finalize()
 	{
                 isFinal = false;
